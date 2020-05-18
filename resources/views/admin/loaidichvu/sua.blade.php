@@ -30,22 +30,13 @@
                             @endif
 
                             <div class="form-group">
-                                <label>Tên loại sản phẩm</label>
-                                <input class="form-control" name="txtTen" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaidichvu->tenloai}}" />
+                                <label>Tên loại dịch vụ</label>
+                                <input class="form-control" name="txtTen" placeholder="Nhập tên loại dịch vụ muốn chỉnh sửa..." value="{{$loaidichvu->tenloai}}" />
                             </div>
 
                              <div class="form-group">
                                 <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaisanpham->tenkhongdau}}" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tên thể loại</label>
-                                <select name="id_theloai">
-                                    @foreach($theloai as $tl)
-                                        <option value="{{$tl->id}}">{{$tl->tentheloai}}</option>
-                                    @endforeach
-                                </select>
+                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại dịch vụ muốn chỉnh sửa..." value="{{$loaidichvu->tenkhongdau}}" />
                             </div>
                             
                             <button type="submit" class="btn btn-default">Sửa</button>

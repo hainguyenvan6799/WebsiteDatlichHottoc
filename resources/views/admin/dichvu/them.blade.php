@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Sản Phẩm
-                            <small>Thêm sản phẩm</small>
+                        <h1 class="page-header">Dịch vụ
+                            <small>Thêm dịch vụ của bạn</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -31,22 +31,22 @@
                     @endif
 
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/sanpham/them" method="POST" enctype="multipart/form-data">
+                        <form action="admin/dichvu/them" method="POST" enctype="multipart/form-data">
                             
                             {{csrf_field()}}
                             <div class="form-group">
-                                <label>Tên sản phẩm</label>
-                                <input class="form-control" name="txtTen" placeholder="Nhập tên sản phẩm" />
+                                <label>Tên dịch vụ</label>
+                                <input class="form-control" name="txtTen" placeholder="Nhập tên dịch vụ" />
                             </div>
 
                             <div class="form-group">
                                 <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên sản phẩm" />
+                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên dịch vụ" />
                             </div>
 
                             <div class="form-group">
                                 <label>Giá</label>
-                                <input class="form-control" name="txtGia" placeholder="Nhập giá sản phẩm" />
+                                <input class="form-control" name="txtGia" placeholder="Nhập giá dịch vụ" />
                             </div>
 
                             <div class="form-group">
@@ -60,19 +60,10 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Tên thể loại</label>
-                                <select name="txttheloai" id="txttheloai" class="form-control">
-                                    @foreach($theloai as $tl)
-                                        <option value="{{$tl->id}}">{{$tl->tentheloai}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tên loại sản phẩm</label>
-                                <select name="txtloaisanpham" id="txtloaisanpham" class="form-control">
-                                    @foreach($loaisanpham as $lsp)
-                                        <option value="{{$lsp->id}}">{{$lsp->tenloaisanpham}}</option>
+                                <label>Tên loại dịch vụ</label>
+                                <select name="txtloaidichvu" id="txtloaidichvu" class="form-control">
+                                    @foreach($loaidichvu as $ldv)
+                                        <option value="{{$ldv->id}}">{{$ldv->tenloai}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -87,7 +78,7 @@
                                 </label>
                             </div> --}}
                             
-                            <button type="submit" class="btn btn-default">Thêm sản phẩm</button>
+                            <button type="submit" class="btn btn-default">Thêm dịch vụ</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>
                     </div>
@@ -103,15 +94,15 @@
     <!-- khai báo jquery -->
     {{-- <script type="text/javascript" language="javascript" src="admin_layout/ckeditor/ckeditor.js" ></script> --}}
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function(){
             $("#txttheloai").change(function(){
                 var idtheloai = $(this).val();
-                $.get("admin/ajax/loaisanpham/"+idtheloai, function(data){
-                    $("#txtloaisanpham").html(data);
+                $.get("admin/ajax/loaidichvu/"+idtheloai, function(data){
+                    $("#txtloaidichvu").html(data);
                 })
             });
         });
-    </script>
+    </script> --}}
 
 @endsection

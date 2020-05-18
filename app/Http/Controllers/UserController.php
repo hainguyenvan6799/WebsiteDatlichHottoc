@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Loaidichvu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -52,5 +53,94 @@ class UserController extends Controller
 	// 	$user->sdt = $sdt;
 	// 	$user->password = $password;
 	// 	$user->save();
+	// }
+
+	public function danhsach(){
+		$users = User::all();
+		return view('admin.users.danhsach',['users'=>$users]);
+	}
+
+	public function getThem(){
+		return view('admin.users.them');
+	}
+	public function postThem(Request $request)
+	{
+		$this->validate($request, [
+			'txtTen'=>'required',
+			'txtEmail'=>'required|regex:/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/',
+			'txtPass'=>'required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',
+			'txtPassagain'=>'required|same:txtPass'
+		],
+		[
+			'txtTen.required'=>'Bạn cần nhập thông tin về Họ và Tên',
+			'txtEmail.required'=>'Bạn cần nhập email để đăng ký.',
+			'txtEmail.regex'=>'Email của bạn phải có định dạng sau abc123@gmail.com',
+			'txtPass.required'=>'Bạn cần nhập password.',
+			'txtPass.regex'=>'Mật khẩu của bạn phải nhiều hơn 8 ký tự, có thể là chữ hoặc số.',
+			'txtPassagain.required'=>'Bạn cần nhập lại mật khẩu.',
+			'txtPassagain.same'=>'Nhập lại mật khẩu phải giống với mật khẩu.'
+		]
+	);
+		$user = new User;
+		$user->name = $request->txtTen;
+		$user->email = $request->txtEmail;
+		$user->password = bcrypt($request->txtPass);
+		$user->quyen = $request->txtQuyen;
+		$user->save();
+		return redirect('admin/user/danhsach')->with('thongbao','Thêm mới người dùng thành công.');
+	}
+
+	public function getSua($iduser)
+	{
+		$user = User::find($iduser);
+		return view('admin.users.sua', ['user'=>$user]);
+	}
+	public function postSua($iduser, Request $request)
+	{
+		$this->validate($request, [
+			'txtTen'=>'required',
+			'txtEmail'=>'required|regex:/^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/'
+		],
+		[
+			'txtTen.required'=>'Bạn cần nhập thông tin về Họ và Tên',
+			'txtEmail.required'=>'Bạn cần nhập email để đăng ký.',
+			'txtEmail.regex'=>'Email của bạn phải có định dạng sau abc123@gmail.com'
+		]
+	);
+		
+	if($request->changePassword == "on")
+	{
+		$this->validate($request, 
+			[
+				'txtPass'=>'required|regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/',
+				'txtPassagain'=>'required|same:txtPass'
+			],
+
+			[
+				'txtPass.required'=>'Bạn cần nhập password.',
+				'txtPass.regex'=>'Mật khẩu của bạn phải nhiều hơn 8 ký tự, có thể là chữ hoặc số.',
+				'txtPassagain.required'=>'Bạn cần nhập lại mật khẩu.',
+				'txtPassagain.same'=>'Nhập lại mật khẩu phải giống với mật khẩu.'
+			]
+		);
+	}
+	$user = User::find($iduser);
+		$user->name = $request->txtTen;
+		$user->email = $request->txtEmail;
+		$request->changePassword == "on" ? $user->password = bcrypt($request->txtPass) : $user->password;
+		$user->quyen = $request->txtQuyen;
+		$user->save();
+		return redirect('admin/user/danhsach')->with('thongbao','Sửa thông tin người dùng thành công.');
+	}
+
+	public function getXoa($id){
+		User::destroy($id);
+	}
+	// public function test(){
+	// 	$loaidv = Loaidichvu::find(1)->get();
+	// 	foreach($loaidv as $l)
+	// 	{
+	// 		dd($l->dichvu);
+	// 	}
 	// }
 }

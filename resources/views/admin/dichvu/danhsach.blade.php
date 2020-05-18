@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Sản phẩm
-                            <small>Danh sách sản phẩm</small>
+                        <h1 class="page-header">dịch vụ
+                            <small>Danh sách dịch vụ</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -19,24 +19,26 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tên sản phẩm</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Giá</th>
                                 <th>Mô tả</th>
                                 <th>Hình</th>
-                                <th>Tên loại sản phẩm</th>
+                                <th>Tên loại dịch vụ</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($sanpham as $sp)
+                            @foreach($dichvu as $dv)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$sp->id}}</td>
-                                <td>{{$sp->tensanpham}}</td>
-                                <td>{{$sp->mota}}</td>
-                                <td><img src="../public/images/sanpham/{{$sp->hinh}}" style="width: 200px;"></td>
-                                <td>{{$sp->loaisanpham->theloai->tentheloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/sanpham/xoa/{{$sp->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/sanpham/sua/{{$sp->id}}">Edit</a></td>
+                                <td>{{$dv->id}}</td>
+                                <td>{{$dv->tendichvu}}</td>
+                                <td>{{$dv->gia}}</td>
+                                <td>{{$dv->mota}}</td>
+                                <td><img src="../public/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
+                                <td>{{$dv->loaidichvu->tenloai}}</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/dichvu/xoa/{{$dv->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/dichvu/sua/{{$dv->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

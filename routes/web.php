@@ -67,34 +67,64 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	// 	Route::get('xoa/{id}', 'theloaiController@xoa');
 
 	// });
-	// Route::group(['prefix'=>'loaisanpham'], function(){
-	// 	//thêm vào danh sách loại sản phẩm
-	// 	Route::get('them', 'loaisanphamController@getThem');
-	// 	Route::post('them', 'loaisanphamController@postThem');
+	Route::group(['prefix'=>'loaidichvu'], function(){
+		//thêm vào danh sách loại sản phẩm
+		Route::get('them', 'loaidichvuController@getThem');
+		// Route::post('them', 'loaidichvuController@postThem');
 
-	// 	//danh sách các loại sản phẩm của cửa hàng
-	// 	Route::get('danhsach', 'loaisanphamController@danhsach');
+		//danh sách các loại sản phẩm của cửa hàng
+		Route::get('danhsach', 'loaidichvuController@danhsach');
 
-	// 	//sửa 1 loại sản phẩm
-	// 	Route::get('sua/{id}', 'loaisanphamController@getSua');
-	// 	Route::post('sua/{id}', 'loaisanphamController@postSua');
+		//sửa 1 loại sản phẩm
+		Route::get('sua/{id}', 'loaidichvuController@getSua');
+		// Route::post('sua/{id}', 'loaisanphamController@postSua');
 
-	// });
+	});
 
-	Route::group(['prefix'=>'sanpham'], function(){
+	Route::group(['prefix'=>'dichvu'], function(){
 		// thêm vào danh sách sản phẩm
-		Route::get('them', 'sanphamController@getThem');
+		Route::get('them', 'dichvuController@getThem');
 		// Route::post('them', 'sanphamController@postThem');
 
 		// //danh sách các loại sản phẩm
-		// Route::get('danhsach', 'sanphamController@danhsach');
+		Route::get('danhsach', 'dichvuController@danhsach');
 
 		// //sửa 1 sản phẩm
-		// Route::get('sua/{id}', 'sanphamController@getSua');
+		Route::get('sua/{id}', 'dichvuController@getSua');
 		// Route::post('sua/{id}', 'sanphamController@postSua');
 	});
 
-	Route::group(['prefix'=>'ajax'], function(){
-		Route::get('loaisanpham/{idtheloai}', 'ajaxController@getLoaisanpham');
+	Route::group(['prefix'=>'user'], function(){
+		Route::get('danhsach', 'UserController@danhsach');
+
+		Route::get('them', 'UserController@getThem');
+		Route::post('them', 'UserController@postThem');
+
+		Route::get('sua/{iduser}', 'UserController@getSua');
+		Route::post('sua/{iduser}', 'UserController@postSua');
+
+		Route::get('xoa/{id}' , 'UserController@getXoa');
 	});
+
+	Route::group(['prefix'=>'loaisanpham'], function(){
+		Route::get('danhsach', 'LoaisanphamController@danhsach');
+
+		Route::get('them', 'LoaisanphamController@getThem');
+
+		Route::get('sua/{id}', 'LoaisanphamController@getSua');
+	});
+
+	Route::group(['prefix'=>'sanpham'], function(){
+		Route::get('danhsach', 'sanphamController@danhsach');
+
+		Route::get('them', 'sanphamController@getThem');
+
+		Route::get('sua/{id}', 'sanphamController@getSua');
+	});
+
+	// Route::group(['prefix'=>'ajax'], function(){
+	// 	Route::get('loaisanpham/{idtheloai}', 'ajaxController@getLoaidichvu');
+	// });
 });
+
+Route::get('test', 'UserController@test');

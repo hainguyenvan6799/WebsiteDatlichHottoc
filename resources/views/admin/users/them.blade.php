@@ -54,10 +54,10 @@
                                 </label>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Tesst</label>
                                 <input name="txtTest">
-                            </div>
+                            </div> --}}
                             <button type="submit" class="btn btn-default">Thêm người dùng</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>

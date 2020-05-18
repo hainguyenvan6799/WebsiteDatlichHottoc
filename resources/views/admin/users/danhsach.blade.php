@@ -27,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($user as $u)
+                            @foreach($users as $u)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$u->id}}</td>
                                 <td>T{{$u->name}}</td>
