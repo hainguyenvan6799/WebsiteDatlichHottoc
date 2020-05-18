@@ -33,12 +33,6 @@
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên loại dịch vụ." />
                             </div>
 
-                            <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại dịch vụ." />
-                            </div>
-
-
                             <button type="submit" class="btn btn-default">Thêm</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>

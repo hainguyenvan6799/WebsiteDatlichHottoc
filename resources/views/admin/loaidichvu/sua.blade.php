@@ -33,11 +33,6 @@
                                 <label>Tên loại dịch vụ</label>
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên loại dịch vụ muốn chỉnh sửa..." value="{{$loaidichvu->tenloai}}" />
                             </div>
-
-                             <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại dịch vụ muốn chỉnh sửa..." value="{{$loaidichvu->tenkhongdau}}" />
-                            </div>
                             
                             <button type="submit" class="btn btn-default">Sửa</button>
                             <button type="reset" class="btn btn-default">Reset</button>

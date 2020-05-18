@@ -70,14 +70,14 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	Route::group(['prefix'=>'loaidichvu'], function(){
 		//thêm vào danh sách loại sản phẩm
 		Route::get('them', 'loaidichvuController@getThem');
-		// Route::post('them', 'loaidichvuController@postThem');
+		Route::post('them', 'loaidichvuController@postThem');
 
 		//danh sách các loại sản phẩm của cửa hàng
 		Route::get('danhsach', 'loaidichvuController@danhsach');
 
 		//sửa 1 loại sản phẩm
 		Route::get('sua/{id}', 'loaidichvuController@getSua');
-		// Route::post('sua/{id}', 'loaisanphamController@postSua');
+		Route::post('sua/{id}', 'loaidichvuController@postSua');
 
 	});
 
