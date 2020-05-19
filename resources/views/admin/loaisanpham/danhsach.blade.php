@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại dịch vụ
-                            <small>Danh sách các loại dịch vụ</small>
+                        <h1 class="page-header">Loại sản phẩm
+                            <small>Danh sách các loại sản phẩm</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -20,18 +20,18 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Tên</th>
-                                <th>Thể loại</th>
+                                <th>Loại sản phẩm</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($loaidichvu as $ldv)
+                            @foreach($loaisanpham as $lsp)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$ldv->id}}</td>
-                                <td>{{$ldv->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaisanpham/xoa/{{$ldv->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaisanpham/sua/{{$ldv->id}}">Edit</a></td>
+                                <td>{{$lsp->id}}</td>
+                                <td>{{$lsp->tenloai}}</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaisanpham/xoa/{{$lsp->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaisanpham/sua/{{$lsp->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -114,13 +114,13 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		Route::get('sua/{id}', 'LoaisanphamController@getSua');
 	});
 
-	Route::group(['prefix'=>'sanpham'], function(){
-		Route::get('danhsach', 'sanphamController@danhsach');
+	// Route::group(['prefix'=>'sanpham'], function(){
+	// 	Route::get('danhsach', 'sanphamController@danhsach');
 
-		Route::get('them', 'sanphamController@getThem');
+	// 	Route::get('them', 'sanphamController@getThem');
 
-		Route::get('sua/{id}', 'sanphamController@getSua');
-	});
+	// 	Route::get('sua/{id}', 'sanphamController@getSua');
+	// });
 
 	// Route::group(['prefix'=>'ajax'], function(){
 	// 	Route::get('loaisanpham/{idtheloai}', 'ajaxController@getLoaidichvu');

@@ -53,6 +53,21 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Loại sản phẩm<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin/loaisanpham/danhsach">Danh sách Loại sản phẩm</a>
+                                </li>
+                                <li>
+                                    <a href="admin/loaisanpham/them">Thêm loại sản phẩm</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

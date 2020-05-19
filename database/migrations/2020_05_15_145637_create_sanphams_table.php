@@ -13,8 +13,14 @@ class CreateSanphamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sanphams', function (Blueprint $table) {
+        Schema::create('sanpham', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('tensanpham');
+            $table->float('gia');
+            $table->text('mota');
+            $table->string('hinhdaidien');
+            $table->integer('luotyeuthich');
+            $table->string('tensanpham_khongdau');
             $table->timestamps();
         });
     }
