@@ -18,14 +18,15 @@
                                     {{session('thongbao')}}
                                 </div>
                             @endif
+
+                            @if(session('loi'))
+                                <div class="alert alert-danger">
+                                    {{session('loi')}}
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label>Tên dịch vụ</label>
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên dịch vụ" value="{{$dichvu->tendichvu}}" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên dịch vụ" value="{{$dichvu->tendichvu_khongdau}}" />
                             </div>
 
                             <div class="form-group">

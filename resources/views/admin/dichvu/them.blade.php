@@ -40,11 +40,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên dịch vụ" />
-                            </div>
-
-                            <div class="form-group">
                                 <label>Giá</label>
                                 <input class="form-control" name="txtGia" placeholder="Nhập giá dịch vụ" />
                             </div>
