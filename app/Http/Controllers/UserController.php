@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
+use Exception;
 
 class UserController extends Controller
 {
@@ -143,4 +146,41 @@ class UserController extends Controller
 	// 		dd($l->dichvu);
 	// 	}
 	// }
+
+
+	//xác thực tài khoản
+	public function getxacthucEmail(){
+		return view('mails.xacthucEmail');
+	}
+	public function postxacthucEmail(Request $request)
+	{
+		if($request->xacthucEmail == 1)
+		{
+			User::where('email', session()->get('email'))->update(['active'=>1]);
+		}
+	}
+	public function getxacthucOTP(){
+		return view('SDT.xacthucOTP');
+	}
+	public function postxacthucOTP(Request $request){
+		$email = session()->has('email') ? session()->get('email') : ''; 
+		$user = User::where('email', $email)->get()->toArray();
+		foreach($user as $u)
+		{
+			if($u['code'] == $request->code)
+			{
+				User::where('email', $email)->update(['code'=>null, 'active'=>1]);
+			}
+		}
+	}
+
+	public function newtest(){
+		$user = new User;
+			$user->email = 'acc@gmail.com';
+			$user->name = 'nguyenvanhai';
+			$user->password = '123456789';
+			$user->active = 0;
+			$wasclean = $user->isClean();
+			$result = $user->save() || $wasclean;
+	}
 }

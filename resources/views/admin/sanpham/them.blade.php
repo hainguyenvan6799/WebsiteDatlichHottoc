@@ -31,17 +31,12 @@
                     @endif
 
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/sanpham/them" method="POST" enctype="multipart/form-data">
+                        <form action="admin/sanpham/them" method="POST" enctype="multipart/form-data" id="formThem">
                             
                             {{csrf_field()}}
                             <div class="form-group">
                                 <label>Tên sản phẩm</label>
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên sản phẩm" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên sản phẩm" />
                             </div>
 
                             <div class="form-group">
@@ -60,22 +55,22 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Tên thể loại</label>
-                                <select name="txttheloai" id="txttheloai" class="form-control">
-                                    @foreach($theloai as $tl)
-                                        <option value="{{$tl->id}}">{{$tl->tentheloai}}</option>
+                                <label>Tên loại sản phẩm</label>
+                                <select name="txtloaisanpham" id="txtloaisanpham" class="form-control">
+                                    @foreach($loaisanpham as $lsp)
+                                        <option value="{{$lsp->id}}">{{$lsp->tenloai}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Tên loại sản phẩm</label>
                                 <select name="txtloaisanpham" id="txtloaisanpham" class="form-control">
                                     @foreach($loaisanpham as $lsp)
                                         <option value="{{$lsp->id}}">{{$lsp->tenloaisanpham}}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="form-group">
                                 <label>Nổi bật</label>
@@ -112,6 +107,12 @@
                 })
             });
         });
+    </script>
+
+    <script type="text/javascript">
+        var formThem = document.getElementById('formThem');
+        var text = 'Bạn có chắc chắn muốn thêm loại dịch vụ này?';
+        this.alertBox(formThem, text);
     </script>
 
 @endsection

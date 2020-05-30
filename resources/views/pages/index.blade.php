@@ -112,50 +112,16 @@
         <h3 class="vr">Call Us: 012-3456-7890</h3>
     		<div class="row justify-content-center">
     			<div class="col-md-10 ftco-animate">
-    				<form action="#" class="appointment-form">
+    				<form action="lichdat" class="appointment-form" method="post">
+              {{csrf_field()}}
 	            <div class="row">
-	              <div class="col-sm-6">
-	                <div class="form-group">
-			              <input type="text" class="form-control" id="appointment_name" placeholder="Name">
-			            </div>
-	              </div>
-	              <div class="col-sm-6">
-	                <div class="form-group">
-			              <input type="text" class="form-control" id="appointment_email" placeholder="Email">
-			            </div>
-	              </div>
-	              <div class="col-sm-6">
-	                <div class="form-group">
-	                  <input type="text" class="form-control appointment_date" placeholder="Date">
-	                </div>    
-	              </div>
-	              <div class="col-sm-6">
-	                <div class="form-group">
-	                  <input type="text" class="form-control appointment_time" placeholder="Time">
-	                </div>
-	              </div>
-	              <div class="col-sm-6">
-	                <div class="form-group">
-			              <div class="select-wrap">
-                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select name="" id="" class="form-control">
-                      	<option value="">Professional Makeup</option>
-                        <option value="">Manicure Pedicure</option>
-                        <option value="">Body Treatment</option>
-                        <option value="">Haircut &amp; Coloring</option>
-                      </select>
-                    </div>
-			            </div>
-	              </div>
-	              <div class="col-sm-6">
-	                <div class="form-group">
-	                  <input type="text" class="form-control" id="phone" placeholder="Phone">
-	                </div>
-	              </div>
-	              <div class="col-md-12">
-	              	<div class="form-group">
-		                <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-		              </div>
+	              <div class="col-sm-8" style="margin: auto;">
+
+		                <div class="form-group">
+				            <input type="tel" class="form-control" id="appointment_sdt" name="appointment_sdt" placeholder="Nhập số điện thoại để đặt lịch" required="">
+				        </div>
+
+				    </div>
 	              </div>
 		          </div>
 		          <div class="form-group">

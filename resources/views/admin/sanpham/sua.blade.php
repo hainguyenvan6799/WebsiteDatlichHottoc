@@ -11,7 +11,7 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/sanpham/sua/{{$sanpham->id}}" method="POST" enctype="multipart/form-data">
+                        <form action="admin/sanpham/sua/{{$sanpham->id}}" method="POST" enctype="multipart/form-data" id="formSua">
                             {{csrf_field()}}
                             @if(session('thongbao'))
                                 <div class="alert alert-success">
@@ -21,11 +21,6 @@
                             <div class="form-group">
                                 <label>Tên sản phẩm</label>
                                 <input class="form-control" name="txtTen" placeholder="Nhập tên sản phẩm" value="{{$sanpham->tensanpham}}" />
-                            </div>
-
-                            <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên sản phẩm" value="{{$sanpham->tenkhongdau}}" />
                             </div>
 
                             <div class="form-group">
@@ -51,4 +46,12 @@
             </div>
             <!-- /.container-fluid -->
         </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        var formSua = document.getElementById('formSua');
+        var text = 'Bạn có chắc chắn muốn sửa thông tin loại dịch vụ này?';
+        this.alertBox(formSua, text);
+    </script>
 @endsection

@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
+use App\SendCode;
 class RegisterController extends Controller
 {
     /*
@@ -66,7 +70,30 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'sdt'=>$data['sdt'],
+            'quyen'=>0,
+            'active'=>0,
             'password' => Hash::make($data['password']),
         ]);
+    }
+    public function register(Request $request){
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        if($request->xacthuc == 'email')
+        {
+            $data = array(
+                'name'=>$request->name,
+                'message'=>'Vui lòng nhấn vào đường link để xác thực Email.'
+            );
+            Mail::to($request->email)->send(new SendMail($data));
+            session()->flash('email', $request->email);
+        }
+        elseif($request->xacthuc == 'sdt')
+        {
+            $code = SendCode::sendcode($request->sdt);
+            User::where('sdt',$request->sdt)->update(['code'=>$code]);
+            session()->put('email', $request->email);
+            return redirect('xacthucOTP');
+        }
     }
 }

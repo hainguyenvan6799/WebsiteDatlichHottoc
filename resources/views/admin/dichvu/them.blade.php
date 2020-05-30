@@ -31,7 +31,7 @@
                     @endif
 
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/dichvu/them" method="POST" enctype="multipart/form-data">
+                        <form action="admin/dichvu/them" method="POST" enctype="multipart/form-data" id="formThem">
                             
                             {{csrf_field()}}
                             <div class="form-group">
@@ -99,5 +99,11 @@
             });
         });
     </script> --}}
+
+    <script type="text/javascript">
+        var formThem = document.getElementById('formThem');
+        var text = 'Bạn có chắc chắn muốn thêm loại dịch vụ này?';
+        this.alertBox(formThem, text);
+    </script>
 
 @endsection

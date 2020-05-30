@@ -68,7 +68,18 @@
     });
     </script>
     <script type="text/javascript" language="javascript" src="admin_layout/ckeditor/ckeditor.js" ></script>
-
+    <script type="text/javascript">
+        function alertBox(form, text)
+        {
+            form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if(confirm(text))
+            {
+                form.submit();
+            }
+        });
+        }
+    </script>
     @yield('script')
 </body>
 

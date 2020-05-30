@@ -12,7 +12,7 @@
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
 
-                        <form action="admin/loaidichvu/sua/{{$loaidichvu->id}}" method="POST">
+                        <form action="admin/loaidichvu/sua/{{$loaidichvu->id}}" method="POST" id="formSua">
                             {{csrf_field()}}
                             @if(count($errors)>0)
                             <div class="alert alert-danger">
@@ -44,4 +44,12 @@
             </div>
             <!-- /.container-fluid -->
         </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        var formSua = document.getElementById('formSua');
+        var text = 'Bạn có chắc chắn muốn sửa thông tin loại dịch vụ này?';
+        this.alertBox(formSua, text);
+    </script>
 @endsection

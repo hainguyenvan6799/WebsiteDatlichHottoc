@@ -37,7 +37,7 @@
                                 <td>{{$dv->mota}}</td>
                                 <td><img src="../public/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
                                 <td>{{$dv->loaidichvu->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/dichvu/xoa/{{$dv->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa({{$dv->id}}, event);"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/dichvu/sua/{{$dv->id}}">Edit</a></td>
                             </tr>
                             @endforeach
@@ -49,4 +49,19 @@
             <!-- /.container-fluid -->
         </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function xoa(id, event){
+            if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
+            {
+                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/loaidichvu/xoa/"+id);
+            }
+            else
+            {
+                document.getElementById('xoa').removeAttribute('href');
+            }
+        }
+    </script>
 @endsection

@@ -33,9 +33,9 @@
                                 <td>{{$sp->id}}</td>
                                 <td>{{$sp->tensanpham}}</td>
                                 <td>{{$sp->mota}}</td>
-                                <td><img src="../public/images/sanpham/{{$sp->hinh}}" style="width: 200px;"></td>
-                                <td>{{$sp->loaisanpham->theloai->tentheloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/sanpham/xoa/{{$sp->id}}"> Delete</a></td>
+                                <td><img src="../public/images/sanpham/{{$sp->hinhdaidien}}" style="width: 200px;"></td>
+                                <td>{{$sp->loaisanpham->tenloai}}</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa({{$sp->id}}, event);"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/sanpham/sua/{{$sp->id}}">Edit</a></td>
                             </tr>
                             @endforeach
@@ -47,4 +47,19 @@
             <!-- /.container-fluid -->
         </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function xoa(id, event){
+            if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
+            {
+                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/loaidichvu/xoa/"+id);
+            }
+            else
+            {
+                document.getElementById('xoa').removeAttribute('href');
+            }
+        }
+    </script>
 @endsection

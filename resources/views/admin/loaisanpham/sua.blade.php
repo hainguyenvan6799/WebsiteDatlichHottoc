@@ -5,14 +5,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại dịch vụ
-                            <small>Sửa thông tin loại dịch vụ</small>
+                        <h1 class="page-header">Loại sản phẩm
+                            <small>Sửa thông tin loại sản phẩm</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
 
-                        <form action="admin/loaidichvu/sua/{{$loaidichvu->id}}" method="POST">
+                        <form action="admin/loaisanpham/sua/{{$loaisanpham->id}}" method="POST" id="formSua">
                             {{csrf_field()}}
                             @if(count($errors)>0)
                             <div class="alert alert-danger">
@@ -31,12 +31,7 @@
 
                             <div class="form-group">
                                 <label>Tên loại sản phẩm</label>
-                                <input class="form-control" name="txtTen" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaidichvu->tenloai}}" />
-                            </div>
-
-                             <div class="form-group">
-                                <label>Tên không dấu</label>
-                                <input class="form-control" name="txtTenkhongdau" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaidichvu->tenloai_khongdau}}" />
+                                <input class="form-control" name="txtTen" placeholder="Nhập tên loại sản phẩm muốn chỉnh sửa..." value="{{$loaisanpham->tenloai}}" />
                             </div>
                             
                             <button type="submit" class="btn btn-default">Sửa</button>
@@ -49,4 +44,12 @@
             </div>
             <!-- /.container-fluid -->
         </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        var formSua = document.getElementById('formSua');
+        var text = 'Bạn có chắc chắn muốn sửa thông tin loại dịch vụ này?';
+        this.alertBox(formSua, text);
+    </script>
 @endsection

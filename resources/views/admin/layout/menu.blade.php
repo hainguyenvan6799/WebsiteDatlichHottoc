@@ -67,6 +67,44 @@
                             <!-- /.nav-second-level -->
                         </li>
 
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> sản phẩm<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin/sanpham/danhsach">Danh sách sản phẩm</a>
+                                </li>
+                                <li>
+                                    <a href="admin/sanpham/them">Thêm sản phẩm</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Nhân viên<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin/nhanvien/danhsach">Danh sách Nhân viên</a>
+                                </li>
+                                <li>
+                                    <a href="admin/nhanvien/them">Thêm Nhân viên</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Khách hàng<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="admin/khachhang/danhsach">Danh sách Khách hàng</a>
+                                </li>
+                                <li>
+                                    <a href="admin/khachhang/them">Thêm Khách hàng</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
 
                     </ul>
                 </div>

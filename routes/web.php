@@ -79,6 +79,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		Route::get('sua/{id}', 'loaidichvuController@getSua');
 		Route::post('sua/{id}', 'loaidichvuController@postSua');
 
+		Route::get('xoa/{id}', 'loaidichvuController@xoa');
+
 	});
 
 	Route::group(['prefix'=>'dichvu'], function(){
@@ -92,6 +94,8 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		// //sửa 1 sản phẩm
 		Route::get('sua/{id}', 'dichvuController@getSua');
 		Route::post('sua/{id}', 'dichvuController@postSua');
+
+
 	});
 
 	Route::group(['prefix'=>'user'], function(){
@@ -110,17 +114,44 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 		Route::get('danhsach', 'LoaisanphamController@danhsach');
 
 		Route::get('them', 'LoaisanphamController@getThem');
+		Route::post('them', 'LoaisanphamController@postThem');
 
 		Route::get('sua/{id}', 'LoaisanphamController@getSua');
+		Route::post('sua/{id}', 'LoaisanphamController@postSua');
 	});
 
-	// Route::group(['prefix'=>'sanpham'], function(){
-	// 	Route::get('danhsach', 'sanphamController@danhsach');
+	Route::group(['prefix'=>'sanpham'], function(){
+		Route::get('danhsach', 'sanphamController@danhsach');
 
-	// 	Route::get('them', 'sanphamController@getThem');
+		Route::get('them', 'sanphamController@getThem');
+		Route::post('them', 'sanphamController@postThem');
 
-	// 	Route::get('sua/{id}', 'sanphamController@getSua');
-	// });
+		Route::get('sua/{id}', 'sanphamController@getSua');
+		Route::post('sua/{id}', 'sanphamController@postSua');
+	});
+
+	Route::group(['prefix'=>'nhanvien'], function(){
+		Route::get('danhsach', 'nhanvienController@danhsach');
+
+		Route::get('them', 'nhanvienController@getThem');
+		//Route::post('them', 'nhanvienController@postThem');
+
+		Route::get('sua/{id}', 'nhanvienController@getSua');
+		// Route::post('sua/{id}', 'nhanvienController@postSua');
+	});
+
+
+	Route::group(['prefix'=>'khachhang'], function(){
+		Route::get('danhsach', 'khachhangController@danhsach');
+
+		Route::get('them', 'khachhangController@getThem');
+		// Route::post('them', 'khachhangController@postThem');
+
+		Route::get('sua/{id}', 'khachhangController@getSua');
+		// Route::post('sua/{id}', 'khachhangController@postSua');
+	});
+
+
 
 	// Route::group(['prefix'=>'ajax'], function(){
 	// 	Route::get('loaisanpham/{idtheloai}', 'ajaxController@getLoaidichvu');
@@ -128,3 +159,23 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 });
 
 Route::get('test', 'UserController@test');
+
+//Xác thực email và OTP
+Route::get('/xacthucEmail', 'UserController@getxacthucEmail');
+Route::post('/xacthucEmail', 'UserController@postxacthucEmail');
+Route::get('/xacthucOTP', 'UserController@getxacthucOTP');
+Route::post('/xacthucOTP', 'UserController@postxacthucOTP');
+
+//newtest
+Route::get('newtest', 'UserController@newtest');
+
+Route::view('googlemap', 'googlemap');
+
+//đặt lịch nào
+
+Route::post('lichdat', 'lichdatController@lichdat');
+
+Route::post('lichdat1', 'lichdatController@lichdat1');
+
+//ajax nào các bạn
+Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');

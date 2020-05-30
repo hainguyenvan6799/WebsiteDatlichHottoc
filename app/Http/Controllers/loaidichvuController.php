@@ -57,4 +57,12 @@ class loaidichvuController extends Controller
         $loaidichvu->save();
         return redirect('admin/loaidichvu/danhsach')->with('thongbao','Sửa thông tin loại dịch vụ thành công.');
     }
+
+    public function xoa($id){
+        if($id != '')
+        {
+            Loaidichvu::destroy($id);
+        }
+        return redirect('admin/loaidichvu/danhsach')->with('thongbao', 'Xóa loại dịch vụ thành công.');
+    }
 }

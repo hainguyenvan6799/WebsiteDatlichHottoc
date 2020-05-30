@@ -38,11 +38,15 @@
 
       	<form action="login" method="post">
       		{{csrf_field()}}
-      		<label for="dangnhap" class="text-danger">Nhập số điện thoại</label>
-      		<input type="tel" name="txtSDT" id="dangnhap"><br>
-      		<label for="password" class="text-danger">Nhập mật khẩu</label>
-      		<input type="password" name="txtPW" id="password"><br>
-      		<input type="submit" name="submitbtn" value="Tiếp tục">
+      		<div class="form-group">
+      			<label for="dangnhap" class="text-danger">Nhập SĐT/Email</label>
+      			<input type="text" name="txtusername" id="dangnhap" class="form-control"><br>
+      		</div>
+      		<div class="form-group">
+      			<label for="password" class="text-danger">Nhập mật khẩu</label>
+      			<input type="password" name="txtPW" id="password" class="form-control"><br>
+      		</div>
+      		<input type="submit" name="submitbtn" value="Tiếp tục" class="btn btn-success">
       		<a href="register">Chưa có Tài khoản, đăng ký tại đây.</a>
       	</form>
         

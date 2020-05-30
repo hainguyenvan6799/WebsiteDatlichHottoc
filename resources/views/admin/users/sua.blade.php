@@ -25,7 +25,7 @@
                         </div>
                     @endif
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/user/sua/{{$user->id}}" method="POST">
+                        <form action="admin/user/sua/{{$user->id}}" method="POST" id="formSua">
                            {{csrf_field()}}
                             <div class="form-group">
                                 <label>Tên người dùng</label>
@@ -78,5 +78,14 @@
                 }
             }); 
         });
+
+
+    </script>
+
+    
+    <script type="text/javascript">
+        var formSua = document.getElementById('formSua');
+        var text = 'Bạn có chắc chắn muốn sửa thông tin loại dịch vụ này?';
+        this.alertBox(formSua, text);
     </script>
 @endsection

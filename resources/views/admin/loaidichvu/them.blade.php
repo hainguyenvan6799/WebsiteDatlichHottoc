@@ -11,7 +11,7 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/loaidichvu/them" method="POST">
+                        <form action="admin/loaidichvu/them" method="POST" id="formThem">
                             
                             {{csrf_field()}}
                             
@@ -44,3 +44,11 @@
         </div>
 
 @endsection 
+
+@section('script')
+    <script type="text/javascript">
+        var formThem = document.getElementById('formThem');
+        var text = 'Bạn có chắc chắn muốn thêm loại dịch vụ này?';
+        this.alertBox(formThem, text);
+    </script>
+@endsection
