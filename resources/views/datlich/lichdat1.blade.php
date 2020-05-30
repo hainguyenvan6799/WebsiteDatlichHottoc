@@ -18,6 +18,12 @@
 		<select name="quan" id="chon_quan">
 			<option selected="">Chọn Quận/Huyện</option>
 		</select>
+
+		<h2>Các cửa hàng</h2>
+		<div id="cuahang">
+
+		</div>
+
 		<input type="submit" name="tieptheo" value="Tiếp theo">
 	</form>
 </body>
@@ -29,6 +35,12 @@
 			//alert($(this).val());
 			$.get('ajax/chonthanhpho/'+$(this).val(), function(text){
 				$('#chon_quan').append(text);
+			});
+		});
+
+		$('#chon_quan').on('change', function(){
+			$.get('ajax/choncuahang/'+$('#chon_thanhpho').val()+'/'+$(this).val(), function(text){
+				$('#cuahang').html(text);
 			});
 		});
 	});

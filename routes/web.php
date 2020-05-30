@@ -173,9 +173,10 @@ Route::view('googlemap', 'googlemap');
 
 //đặt lịch nào
 
-Route::post('lichdat', 'lichdatController@lichdat');
-
 Route::post('lichdat1', 'lichdatController@lichdat1');
+
+Route::post('lichdat2', 'lichdatController@lichdat2');
 
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');
+Route::get('ajax/choncuahang/{tp}/{q}', 'ajaxController@choncuahang');
