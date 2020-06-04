@@ -2,16 +2,17 @@
 <html>
 <head>
 	<title></title>
+	<meta charset="utf-8">
 </head>
 <body>
-	<form action="lichdat1" method="post">
-		
+	<form action="lichdat2" method="post">
+		{{csrf_field()}}
 		<h2>Chọn salon gần bạn</h2>
 		<select name="thanhpho" id="chon_thanhpho">
 
 			<option selected="">Chọn Tỉnh/TP</option>
 			@foreach($thanhpho as $tp)
-				<option value="{{$tp['thanhpho']}}">{{$tp['thanhpho']}}</option>
+				<option>{{$tp['thanhpho']}}</option>
 			@endforeach
 			
 		</select>

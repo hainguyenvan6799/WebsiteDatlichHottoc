@@ -176,6 +176,8 @@ Route::view('googlemap', 'googlemap');
 Route::post('lichdat1', 'lichdatController@lichdat1');
 
 Route::post('lichdat2', 'lichdatController@lichdat2');
+Route::post('lichdat3', 'lichdatController@lichdat3');
+Route::get('lichdat3/{id}', 'lichdatController@getlichdat3');
 
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');

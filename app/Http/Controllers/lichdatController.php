@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\CuaHang;
 use DB;
+use App\NhanVien;
 
 use Illuminate\Http\Request;
 
@@ -16,8 +17,20 @@ class lichdatController extends Controller
     }
 
     public function lichdat2(Request $request){
-    	$id_cuahang = $request->id_cuahang;
-    	session()->put('id_cuahang', $id_cuahang);
-    	return view('datlich.lichdat2');
+        $id_cuahang = $request->id_cuahang;
+        session()->put('id_cuahang', $id_cuahang);
+        $nhanvien = NhanVien::where('id_cuahang', $id_cuahang)->get();
+        return view('datlich.lichdat2', ['nhanvien'=>$nhanvien]);
+    }
+    public function lichdat3(Request $request)
+    {
+        $id_nhanvien = $request->chonnhanvien;
+        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien]);
+    }
+    public function getlichdat3($id)
+    {
+        dd($id);
+
     }
 }
+

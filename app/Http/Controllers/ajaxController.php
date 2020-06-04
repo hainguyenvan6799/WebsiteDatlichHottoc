@@ -25,7 +25,7 @@ class ajaxController extends Controller
     		echo '<h2>'.$ch['tencuahang'].'</h2>';
     		echo '<br>';
     		echo '<h3>'.$ch['sdt'].'</h3>';
-    		echo '<input type="hidden" name="id_cuahang" value="'.$ch['id'].'" />'
+    		echo '<input type="radio" name="id_cuahang" class="id_cuahang" value="'.$ch['id'].'" />';
     	}
     }
 }
