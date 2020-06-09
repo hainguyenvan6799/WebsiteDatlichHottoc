@@ -19,7 +19,7 @@ class lichdatController extends Controller
     public function lichdat2(Request $request){
         $id_cuahang = $request->id_cuahang;
         session()->put('id_cuahang', $id_cuahang);
-        $nhanvien = NhanVien::where('id_cuahang', $id_cuahang)->get();
+        $nhanvien = NhanVien::where('cuahang_id', $id_cuahang)->get();
         return view('datlich.lichdat2', ['nhanvien'=>$nhanvien]);
     }
     public function lichdat3(Request $request)
@@ -29,8 +29,7 @@ class lichdatController extends Controller
     }
     public function getlichdat3($id)
     {
-        dd($id);
-
+        return view('datlich.lichdat3', ['newvar'=>$id]);
     }
 }
 

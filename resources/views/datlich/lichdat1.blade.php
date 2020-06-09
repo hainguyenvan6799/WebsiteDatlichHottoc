@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<form action="lichdat2" method="post">
+	<form action="lichdat2" method="post" id="formlichdat2">
 		{{csrf_field()}}
 		<h2>Chọn salon gần bạn</h2>
 		<select name="thanhpho" id="chon_thanhpho">
@@ -32,7 +32,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('#chon_thanhpho').on('change', function(){
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(function(position){
+				var pos = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+
+				$('#chon_thanhpho').on('change', function(){
 			//alert($(this).val());
 			$.get('ajax/chonthanhpho/'+$(this).val(), function(text){
 				$('#chon_quan').append(text);
@@ -40,10 +47,14 @@
 		});
 
 		$('#chon_quan').on('change', function(){
-			$.get('ajax/choncuahang/'+$('#chon_thanhpho').val()+'/'+$(this).val(), function(text){
+			$.get('ajax/choncuahang/'+$('#chon_thanhpho').val()+'/'+$(this).val()+'/'+pos.lat+'/'+pos.lng,function(text){
 				$('#cuahang').html(text);
 			});
 		});
+			});
+		}
+
+		
 	});
 </script>
 </html>

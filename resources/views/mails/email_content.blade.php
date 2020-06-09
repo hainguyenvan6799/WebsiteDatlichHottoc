@@ -1,3 +1,14 @@
-<p>Xin chao {{$data['name']}}</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<base href="{{asset('')}}">
+</head>
+<body>
+	<p>Xin chao {{$data['name']}}</p>
 <p>{{$data['message']}}</p>
-<a href="{{url('xacthucEmail')}}">Nhấn vào đây để xác thực</a>
+<a href="xacthucEmail/{{$data['email']}}">Nhấn vào đây để xác thực</a>
+</body>
+</html>
+
+

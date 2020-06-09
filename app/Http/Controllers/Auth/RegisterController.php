@@ -83,10 +83,12 @@ class RegisterController extends Controller
         {
             $data = array(
                 'name'=>$request->name,
-                'message'=>'Vui lòng nhấn vào đường link để xác thực Email.'
+                'message'=>'Vui lòng nhấn vào đường link để xác thực Email.',
+                'email'=>$request->email
             );
-            Mail::to($request->email)->send(new SendMail($data));
-            session()->flash('email', $request->email);
+            if(Mail::to($request->email)->send(new SendMail($data))){
+                echo '<script>Vui lòng kiểm tra email để xác nhận đăng ký.</script>';
+            }
         }
         elseif($request->xacthuc == 'sdt')
         {

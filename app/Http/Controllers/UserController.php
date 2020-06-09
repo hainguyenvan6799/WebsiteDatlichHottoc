@@ -149,14 +149,17 @@ class UserController extends Controller
 
 
 	//xác thực tài khoản
-	public function getxacthucEmail(){
-		return view('mails.xacthucEmail');
+	public function getxacthucEmail($email){
+		return view('mails.xacthucEmail', ['email'=>$email]);
 	}
 	public function postxacthucEmail(Request $request)
 	{
 		if($request->xacthucEmail == 1)
 		{
-			User::where('email', session()->get('email'))->update(['active'=>1]);
+			$email = $request->txtEmail;
+			User::where('email', $email)->update(['active'=>1]);
+			echo '<script>alert("Xác thực Email thành công.");</script>';
+			echo '<script>window.location.href = "../HotToc/public/";</script>'
 		}
 	}
 	public function getxacthucOTP(){

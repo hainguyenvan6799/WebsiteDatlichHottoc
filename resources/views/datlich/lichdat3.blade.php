@@ -12,6 +12,8 @@
       $getnowday = Carbon\Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
       $start = '';
       $end = '';
+      //echo '<script>alert(document.cookie);</script>';
+      //echo $_COOKIE['abc'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,7 +80,7 @@ body {font-family: Arial;}
 
 <div id="{{$dateArray[$i]}}" class="tabcontent">
   <?php
-    $giolamviec = lichlamviec_nhanvien::where('id_nhanvien', $id_nhanvien)->where('ngaylamviec', $dateArray[$i])->get()->toArray();
+    $giolamviec = lichlamviec_nhanvien::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->get()->toArray();
     if(!$giolamviec)
     {
       $start = '0:0';
@@ -120,20 +122,12 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
-  document.getElementById('test').value = "abc";
+  
 }
 
 document.getElementById('defaultOpen').click();
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="module">
-  $(document).ready(function(){
-      var href = window.location.href;
-      $.get(href+'/4', function(){
-        alert($(this).val());
-      });
-    
-  });
+
+document.cookie = "abc=VanHai";
 </script>
 </body>
 </html> 

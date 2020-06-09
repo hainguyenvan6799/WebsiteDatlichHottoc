@@ -161,7 +161,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 Route::get('test', 'UserController@test');
 
 //Xác thực email và OTP
-Route::get('/xacthucEmail', 'UserController@getxacthucEmail');
+Route::get('/xacthucEmail/{email}', 'UserController@getxacthucEmail');
 Route::post('/xacthucEmail', 'UserController@postxacthucEmail');
 Route::get('/xacthucOTP', 'UserController@getxacthucOTP');
 Route::post('/xacthucOTP', 'UserController@postxacthucOTP');
@@ -177,8 +177,7 @@ Route::post('lichdat1', 'lichdatController@lichdat1');
 
 Route::post('lichdat2', 'lichdatController@lichdat2');
 Route::post('lichdat3', 'lichdatController@lichdat3');
-Route::get('lichdat3/{id}', 'lichdatController@getlichdat3');
 
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');
-Route::get('ajax/choncuahang/{tp}/{q}', 'ajaxController@choncuahang');
+Route::get('ajax/choncuahang/{tp}/{q}/{lat}/{lng}', 'ajaxController@choncuahang');
