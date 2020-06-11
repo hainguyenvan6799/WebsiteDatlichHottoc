@@ -31,5 +31,9 @@ class lichdatController extends Controller
     {
         return view('datlich.lichdat3', ['newvar'=>$id]);
     }
+
+    public function formBooking(Request $request){
+        dd($request->datebook);
+    }
 }
 

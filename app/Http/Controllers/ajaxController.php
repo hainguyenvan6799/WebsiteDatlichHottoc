@@ -25,23 +25,22 @@ class ajaxController extends Controller
     		echo '<h2>'.$ch['tencuahang'].'</h2>';
     		echo '<br>';
     		echo '<h3>'.$ch['sdt'].'</h3>';
-    		echo '<input type="radio" name="id_cuahang" class="id_cuahang" value="'.$ch['id'].'" />';
-            $distance = $this->distance($lat, $lng, $ch['lat'], $ch['lng']);
+            $distance = $this->distanceHaversineFormula($lat, $lng, $ch['lat'], $ch['lng']);
             echo '<h2>Cách khoảng '.$distance.' km</h2>';
+    		echo '<input type="radio" name="id_cuahang" class="id_cuahang" value="'.$ch['id'].'" />';
+            
     	}
     }
-    public function distance($lat1, $lng1, $lat2, $lng2)
-    {
-        $earthRadius = 6371;
-        $latFrom = deg2rad($lat1);
-        $lngFrom = deg2rad($lng1);
-        $latTo = deg2rad($lat2);
-        $lngTo = deg2rad($lng2);
+    public function distanceHaversineFormula($lat1, $lng1, $lat2, $lng2){
+        $r = 6371;
+        $l1 = $lat1*M_PI/180;
+        $l2 = $lat2*M_PI/180;
+        $deltaLat = ($lat2 - $lat1)*M_PI/180;
+        $deltaLng = ($lng2 - $lng1)*M_PI/180;
 
-        $latDelta = $latTo - $latFrom;
-        $lngDelta = $lngTo - $lngFrom;
-        $angle = 2*asin(sqrt(pow(sin($latDelta/2),2)+ cos($latFrom)*cos($latTo)*pow(sin($lngDelta/2),2)));
-        $result = $angle*$earthRadius;
-        return $result;
+        $a = sin($deltaLat/2)*sin($deltaLat/2)+cos($l1)*cos($l2)*sin($deltaLng/2)*sin($deltaLng/2);
+        $c = 2*atan2(sqrt($a), sqrt(1-$a));
+        $d = $r*$c;
+        return $d;
     }
 }

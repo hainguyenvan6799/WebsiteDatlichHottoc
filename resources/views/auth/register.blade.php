@@ -5,6 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                
+                    @if(session('thongbao'))
+                    <div class="alert alert-success">
+                        {{session('thongbao')}}
+                    </div>
+                    @endif
+                
+
                 <div class="card-header">{{ __('Đăng ký hớt tóc nào!') }}</div>
 
                 <div class="card-body">

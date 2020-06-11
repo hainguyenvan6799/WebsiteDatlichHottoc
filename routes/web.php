@@ -181,3 +181,13 @@ Route::post('lichdat3', 'lichdatController@lichdat3');
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');
 Route::get('ajax/choncuahang/{tp}/{q}/{lat}/{lng}', 'ajaxController@choncuahang');
+
+Route::post('formBooking', 'lichdatController@formBooking');
+
+Route::get('dbtable', function(){
+	$a = DB::table('users')->get();
+	foreach($a as $data)
+	{
+		dd($data);
+	}
+});

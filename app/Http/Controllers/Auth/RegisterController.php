@@ -77,7 +77,7 @@ class RegisterController extends Controller
         ]);
     }
     public function register(Request $request){
-        $this->validator($request->all())->validate();
+            $a = $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($request->all())));
         if($request->xacthuc == 'email')
         {
@@ -86,9 +86,8 @@ class RegisterController extends Controller
                 'message'=>'Vui lòng nhấn vào đường link để xác thực Email.',
                 'email'=>$request->email
             );
-            if(Mail::to($request->email)->send(new SendMail($data))){
-                echo '<script>Vui lòng kiểm tra email để xác nhận đăng ký.</script>';
-            }
+            Mail::to($request->email)->send(new SendMail($data));
+                return redirect('register')->with('thongbao', 'Vui lòng kiểm tra email để hoàn tất đăng ký.');
         }
         elseif($request->xacthuc == 'sdt')
         {
