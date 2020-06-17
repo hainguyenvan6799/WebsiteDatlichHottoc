@@ -13,7 +13,7 @@ class LichDat extends Model
     	return $this->belongsTo('App\NhanVien', 'nhanvien_id', 'id');
     }
 
-    public function nhanvien(){
-    	return $this->belongsTo('App\KhachHang', 'khachhang_id', 'id');
-    }
+    // public function nhanvien(){
+    // 	return $this->belongsTo('App\KhachHang', 'khachhang_id', 'id');
+    // }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\CuaHang;
 use DB;
 use App\NhanVien;
+use App\LichDat;
 
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class lichdatController extends Controller
     public function lichdat1(Request $request){
     	$sdt = $request->appointment_sdt;
     	$thanhpho = CuaHang::select('thanhpho')->distinct()->get()->toArray();
-    	return view('datlich.lichdat1', ['sdt'=>$sdt, 'thanhpho'=>$thanhpho]);
+        session()->put('sdt', $sdt);
+    	return view('datlich.lichdat1', ['thanhpho'=>$thanhpho]);
     }
 
     public function lichdat2(Request $request){
@@ -33,7 +35,22 @@ class lichdatController extends Controller
     }
 
     public function formBooking(Request $request){
-        dd($request->datebook);
+        $datebook = $request->datebook;
+        $tenkhachhang = $request->ten;
+        $id_nhanvien = $request->id_nhanvien;
+        $timeslot = $request->timeslot;
+        $id_cuahang = session()->get('id_cuahang');
+        $email = $request->email;
+        $sdt = session()->get('sdt');
+        $lichdat = new LichDat;
+        $lichdat->nhanvien_id = $id_nhanvien;
+        $lichdat->tenkhachhang = $tenkhachhang;
+        // $dichvu_id = null;
+        $lichdat->thoigian = $timeslot;
+        $lichdat->id_cuahang = $id_cuahang;
+        $lichdat->save();
+        return redirect('/')->with('<script>alert("Đặt lịch thành công.");</script>');
+
     }
 }
 

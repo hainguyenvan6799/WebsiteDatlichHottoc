@@ -10,7 +10,7 @@ class dichvuController extends Controller
 {
     //get
     public function danhsach(){
-    	$dichvu = Dichvu::all();
+    	$dichvu = Dichvu::where('hienthi', 1)->get();
     	return view('admin.dichvu.danhsach', ['dichvu'=>$dichvu]);
     }
     public function getThem(){
@@ -28,7 +28,7 @@ class dichvuController extends Controller
         $this->validate($request,
             [
                 'txtTen'=>'required',
-                'txtGia'=>'required',
+                'txtGia'=>'required',// Thêm vào kiểm tra phải là số và lớn hơn 0
             ],
             [
                 'txtTen.required'=>'Bạn cần nhập tên dịch vụ.',

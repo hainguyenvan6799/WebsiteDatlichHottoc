@@ -67,6 +67,10 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 	// 	Route::get('xoa/{id}', 'theloaiController@xoa');
 
 	// });
+	Route::group(['prefix'=>'dashboard'], function(){
+		Route::get('index', 'dashboardController@getIndex');
+	});
+
 	Route::group(['prefix'=>'loaidichvu'], function(){
 		//thêm vào danh sách loại sản phẩm
 		Route::get('them', 'loaidichvuController@getThem');

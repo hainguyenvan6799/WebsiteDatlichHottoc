@@ -14,7 +14,15 @@
 	        	<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
 	          	<li class="nav-item"><a href="contact" class="nav-link">Liên hệ</a></li>
 	          	@if(Auth::check())
-	          		<li class="nav-item"><a href="logout" class="nav-link btn btn-warning">Đăng xuất</a></li>
+	          	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="position: relative;">
+			      Tài khoản
+			    </button>
+			    <div class="dropdown-menu" style="border: 2px solid yellow; position: absolute; top: 90px; right: 15px; left: 1100px;">
+			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
+			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
+			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
+			    </div>
+	          		
 	          	@else
 	          		<li class="nav-item"><a type="button" class="nav-link btn btn-warning" data-toggle="modal" data-target="#mymodal">Đăng nhập</a></li>
 	          	@endif
