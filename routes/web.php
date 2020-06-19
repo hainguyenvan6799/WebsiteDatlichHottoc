@@ -103,6 +103,20 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 
 	});
 
+	Route::group(['prefix'=>'lichdat'], function(){
+		Route::get('them', 'lichdatController@getThem')->name('lichdat/getThem');
+		Route::post('them', 'lichdatController@postThem')->name('lichdat/postThem');
+
+		// //danh sách các loại sản phẩm
+		Route::get('danhsach', 'lichdatController@getDanhsach')->name('lichdat/getDanhsach');
+
+		// //sửa 1 sản phẩm
+		Route::get('sua/{id}', 'lichdatController@getSua')->name('lichdat/getSua');
+		Route::post('sua/{id}', 'lichdatController@postSua')->name('lichdat/postSua');
+
+		Route::get('xoa/{id}', 'lichdatController@getXoa')->name('lichdat/getXoa');
+	});
+
 	Route::group(['prefix'=>'user'], function(){
 		Route::get('danhsach', 'UserController@danhsach');
 

@@ -10,6 +10,7 @@
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
+
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="admin/loaidichvu/them" method="POST">
                             
@@ -29,8 +30,28 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label>Tên loại dịch vụ</label>
-                                <input class="form-control" name="txtTen" placeholder="Nhập tên loại dịch vụ." />
+                                <label>Nhập tên khách hàng</label>
+                                <input type="text" class="form-control" name="txtTen" placeholder="Nhập tên loại dịch vụ." required="" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Chọn Cửa hàng</label>
+
+                                <select name="chon_cuahang">
+                                    @foreach($cuahang as $ch)
+                                        <option>{{$ch->tencuahang}} - {{'Đường ' . $ch->duong . ', Phường ' . $ch->phuong . ', Quận ' . $ch->quan . ', TP ' . $ch->thanhpho}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Chọn nhân viên</label>
+                                
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nhập tên khách hàng</label>
+                                <input type="text" class="form-control" name="txtTen" placeholder="Nhập tên loại dịch vụ." required="" />
                             </div>
 
                             <button type="submit" class="btn btn-default">Thêm</button>

@@ -5,8 +5,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại dịch vụ
-                            <small>Danh sách các loại dịch vụ</small>
+                        <h1 class="page-header">Lịch đặt
+                            <small>Danh sách lịch đặt</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -19,18 +19,26 @@
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
-                                <th>Tên loại dịch vụ</th>
+                                <th>Tên nhân viên</th>
+                                <th>Tên khách hàng</th>
+                                <th>Tên dịch vụ</th>
+                                <th>Thời gian</th>
+                                <th>Tên cửa hàng</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($loaidichvu as $ldv)
+                            @foreach($lichdat as $ld)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$ldv->id}}</td>
-                                <td>{{$ldv->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loaidichvu/xoa/{{$ldv->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loaidichvu/sua/{{$ldv->id}}">Edit</a></td>
+                                <td>{{$ld->id}}</td>
+                                <td>{{$ld->nhanvien->user->name}}</td>
+                                <td>{{$ld->tenkhachhang}}</td>
+                                <td>{{$ld->dichvu->tendichvu}}</td>
+                                <td>{{$ld->thoigian}}</td>
+                                <td>{{$ld->cuahang->tencuahang}}</td> 
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="id_dv" id="id_dv" value="{{$ld->id}}"></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

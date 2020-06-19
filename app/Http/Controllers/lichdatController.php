@@ -52,5 +52,17 @@ class lichdatController extends Controller
         return redirect('/')->with('<script>alert("Đặt lịch thành công.");</script>');
 
     }
+
+    //admin
+    public function getDanhsach(){
+        $lichdat = LichDat::all();
+        return view('admin.lichdat.danhsach', ['lichdat'=>$lichdat]);
+    }
+
+    public function getThem(){
+        $lichdat = LichDat::all();
+        $cuahang = CuaHang::all();
+        return view('admin.lichdat.them', ['lichdat'=>$lichdat, 'cuahang'=>$cuahang]);
+    }
 }
 

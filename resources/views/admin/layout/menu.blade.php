@@ -106,6 +106,19 @@
                             <!-- /.nav-second-level -->
                         </li>
 
+                        <li>
+                            <a href="#"><i class="fa fa-cube fa-fw"></i> Lịch đặt<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{route('lichdat/getDanhsach')}}">Danh sách Lịch đặt</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('lichdat/getThem')}}">Thêm Lịch đặt</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
