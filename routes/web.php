@@ -89,16 +89,17 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 
 	Route::group(['prefix'=>'dichvu'], function(){
 		// thêm vào danh sách sản phẩm
-		Route::get('them', 'dichvuController@getThem');
-		Route::post('them', 'dichvuController@postThem');
+		Route::get('them', 'dichvuController@getThem')->name('dichvu/getThem');
+		Route::post('them', 'dichvuController@postThem')->name('dichvu/postThem');
 
 		// //danh sách các loại sản phẩm
-		Route::get('danhsach', 'dichvuController@danhsach');
+		Route::get('danhsach', 'dichvuController@danhsach')->name('dichvu/getDanhsach');
 
 		// //sửa 1 sản phẩm
-		Route::get('sua/{id}', 'dichvuController@getSua');
-		Route::post('sua/{id}', 'dichvuController@postSua');
+		Route::get('sua/{id}', 'dichvuController@getSua')->name('dichvu/getSua');
+		Route::post('sua/{id}', 'dichvuController@postSua')->name('dichvu/postSua');
 
+		Route::get('xoa/{id}', 'dichvuController@getXoa')->name('dichvu/getXoa');
 
 	});
 

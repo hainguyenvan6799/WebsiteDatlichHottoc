@@ -10,7 +10,7 @@ class dichvuController extends Controller
 {
     //get
     public function danhsach(){
-    	$dichvu = Dichvu::where('hienthi', 1)->get();
+    	$dichvu = Dichvu::all();
     	return view('admin.dichvu.danhsach', ['dichvu'=>$dichvu]);
     }
     public function getThem(){
@@ -44,7 +44,7 @@ class dichvuController extends Controller
         $dichvu->luotyeuthich = 0;
         if(!$request->hasFile('filehinh'))
         {
-            return redirect('admin/dichvu/them')->with('loi','Dịch vụ chưa có ảnh đại diện.');
+            return redirect()->route('dichvu/getDanhsach')->with('loi','Dịch vụ chưa có ảnh đại diện.');
         }
         else
         {
@@ -53,7 +53,7 @@ class dichvuController extends Controller
             $extendOfFile = $filehinh->getClientOriginalExtension();
             if($extendOfFile != 'jpg' && $extendOfFile != 'png')
             {
-                return redirect('admin/dichvu/them')->with('loi','Bạn chỉ được thêm file .jpg hoặc .png');
+                return redirect()->route('dichvu/getThem')->with('loi','Bạn chỉ được thêm file .jpg hoặc .png');
             }
             else
             {
@@ -66,8 +66,9 @@ class dichvuController extends Controller
                 $dichvu->anhdaidien = $newname;
             }
         }
+        $dichvu->hienthi = 1;
         $dichvu->save();
-        return redirect('admin/dichvu/danhsach')->with('thongbao','Thêm dịch vụ thành công.');
+        return redirect()->route('dichvu/getDanhsach')->with('thongbao','Thêm dịch vụ thành công.');
     }
 
     public function postSua($id, Request $request)
@@ -97,7 +98,7 @@ class dichvuController extends Controller
             $extendOfFile = $filehinh->getClientOriginalExtension();
             if($extendOfFile != 'jpg' && $extendOfFile != 'png')
             {
-                return redirect('admin/dichvu/sua/'.$id)->with('loi', 'Chỉ được phép chọn file .jpg hoặc .png');
+                return redirect()->route('dichvu/getSua', ['id'=>$id])->with('loi', 'Chỉ được phép chọn file .jpg hoặc .png');
             }
             else
             {
@@ -111,6 +112,13 @@ class dichvuController extends Controller
             }
         }
         $dichvu->save();
-        return redirect('admin/dichvu/danhsach')->with('thongbao','Chỉnh sửa thông tin dịch vụ thành công.');
+        return redirect()->route('dichvu/getDanhsach')->with('thongbao','Chỉnh sửa thông tin dịch vụ thành công.');
+    }
+    public function getXoa($id)
+    {
+        $dichvu = Dichvu::find($id);
+        $dichvu->hienthi = 0;
+        $dichvu->save();
+        return redirect()->route('dichvu/getDanhsach')->with('thongbao', 'Xóa dịch vụ thành công.');
     }
 }

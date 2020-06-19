@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Chọn nhân viên</title>
-</head>
-<style>
+@extends('datlich.layout_lichdat')
+
+@section('title')
+  <title>Bước 2 - Chọn nhân viên</title>
+@endsection
+
+@section('css')
+  <style>
 body {font-family: Arial;}
 
 /* Style the tab */
@@ -43,8 +45,9 @@ body {font-family: Arial;}
   border-top: none;
 }
 </style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<body>
+@endsection
+
+@section('content')
   <form action="lichdat3" method="POST">
     {{csrf_field()}}
     @foreach($nhanvien as $nv)
@@ -52,5 +55,5 @@ body {font-family: Arial;}
     @endforeach
     <input type="submit" name="submit" value="Tiếp theo" class="btn btn-success">
   </form>
-</body>
-</html>
+@endsection
+

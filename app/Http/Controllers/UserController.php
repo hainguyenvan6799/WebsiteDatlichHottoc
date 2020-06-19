@@ -159,7 +159,7 @@ class UserController extends Controller
 			$email = $request->txtEmail;
 			User::where('email', $email)->update(['active'=>1]);
 			echo '<script>alert("Xác thực Email thành công.");</script>';
-			echo '<script>window.location.href = "../HotToc/public/";</script>'
+			echo '<script>window.location.href = "../HotToc/public/";</script>';
 		}
 	}
 	public function getxacthucOTP(){

@@ -5,6 +5,7 @@ use App\CuaHang;
 use DB;
 use App\NhanVien;
 use App\LichDat;
+use App\Dichvu;
 
 use Illuminate\Http\Request;
 
@@ -26,12 +27,9 @@ class lichdatController extends Controller
     }
     public function lichdat3(Request $request)
     {
+        $dichvu = Dichvu::all();
         $id_nhanvien = $request->chonnhanvien;
-        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien]);
-    }
-    public function getlichdat3($id)
-    {
-        return view('datlich.lichdat3', ['newvar'=>$id]);
+        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien, 'dichvu'=>$dichvu]);
     }
 
     public function formBooking(Request $request){
@@ -42,10 +40,12 @@ class lichdatController extends Controller
         $id_cuahang = session()->get('id_cuahang');
         $email = $request->email;
         $sdt = session()->get('sdt');
+        $id_dichvu = $request->id_dichvu;
+
         $lichdat = new LichDat;
         $lichdat->nhanvien_id = $id_nhanvien;
         $lichdat->tenkhachhang = $tenkhachhang;
-        // $dichvu_id = null;
+        $lichdat->dichvu_id = $id_dichvu;
         $lichdat->thoigian = $timeslot;
         $lichdat->id_cuahang = $id_cuahang;
         $lichdat->save();

@@ -31,7 +31,7 @@
                     @endif
 
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/dichvu/them" method="POST" enctype="multipart/form-data" id="formThem">
+                        <form action="{{route('dichvu/postThem')}}" method="POST" enctype="multipart/form-data" id="formThem">
                             
                             {{csrf_field()}}
                             <div class="form-group">

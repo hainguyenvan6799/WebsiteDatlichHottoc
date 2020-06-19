@@ -34,7 +34,7 @@
                                 <td>{{$u->email}}</td>
                                 <td>{{$u->quyen}}</td>
 
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa({{$sp->id}}, event);"> Delete</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa({{$u->id}}, event);"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/user/sua/{{$u->id}}">Edit</a></td>
                             </tr>
                             @endforeach

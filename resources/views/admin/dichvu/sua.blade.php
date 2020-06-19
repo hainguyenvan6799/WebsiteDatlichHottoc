@@ -11,7 +11,7 @@
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="admin/dichvu/sua/{{$dichvu->id}}" method="POST" enctype="multipart/form-data" id="formSua">
+                        <form action="{{route('dichvu/postSua',['id'=>$dichvu->id])}}" method="POST" enctype="multipart/form-data" id="formSua">
                             {{csrf_field()}}
                             @if(session('thongbao'))
                                 <div class="alert alert-success">

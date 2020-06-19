@@ -15,16 +15,14 @@
       //echo '<script>alert(document.cookie);</script>';
       //echo $_COOKIE['abc'];
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-  var res = "success";
-</script>
+
+@extends('datlich.layout_lichdat')
+
+@section('title')
+  <title>Bước 3 - Chọn khung giờ</title>
+@endsection
+
+@section('css')
 <style>
 body {font-family: Arial;}
 
@@ -65,8 +63,9 @@ body {font-family: Arial;}
   border-top: none;
 }
 </style>
-</head>
-<body>
+@endsection
+
+@section('content')
 
 <h2>Tabs</h2>
 <p>Click on the buttons inside the tabbed menu:</p>
@@ -104,7 +103,10 @@ body {font-family: Arial;}
         
       </div>
     <?php } ?>
+
+    
 </div>
+
 
 {{-- modal --}}
           <div id="myModal" class="modal fade" role="dialog">
@@ -126,6 +128,7 @@ body {font-family: Arial;}
                           <input type="text" readonly="" name="timeslot" id="form-timeslot" class="form-control" value="">
                           <input type="hidden" name="datebook" id="datebook">
                           <input type="hidden" name="id_nhanvien" id="id_nhanvien">
+                          <input type="hidden" name="id_dichvu" id="id_dichvu">
                         </div>
 
                         <div class="form-group">
@@ -156,8 +159,16 @@ body {font-family: Arial;}
 
 <?php } ?>
 
+<select name="dichvu" id="dichvu">
+      @foreach($dichvu as $dv)
+        <option value="{{$dv->id}}">{{$dv->tendichvu}}</option>
+      @endforeach
+</select>
 
+
+@endsection
 {{-- && lichlamviec_nhanvien::where('id_nhanvien', $nv->id)->where('ngaylamviec', ) --}}
+@section('script')
 <script>
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;
@@ -184,12 +195,15 @@ document.cookie = "abc=VanHai";
     var timeslot = $(this).attr('data-timeslot');
     var date = $(this).attr('data-datebook');
     var id_nhanvien = $(this).attr('data-idnhanvien');
-    alert(id_nhanvien);
+    var id_dichvu = $('#dichvu').val();
+    // alert(id_dichvu);
+    // alert(id_nhanvien);
     $('#slot').html(timeslot);
     $('#form-timeslot').val(timeslot);
     $('#datebook').val(date);
     $('#id_nhanvien').val(id_nhanvien);
+    $('#id_dichvu').val(id_dichvu);
   });
 </script>
-</body>
-</html> 
+
+@endsection

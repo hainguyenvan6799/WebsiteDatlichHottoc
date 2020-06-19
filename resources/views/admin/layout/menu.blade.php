@@ -32,10 +32,10 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> Dịch vụ<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="admin/dichvu/danhsach">Danh sách dịch vụ</a>
+                                    <a href="{{route('dichvu/getDanhsach')}}">Danh sách dịch vụ</a>
                                 </li>
                                 <li>
-                                    <a href="admin/dichvu/them">Thêm dịch vụ</a>
+                                    <a href="{{route('dichvu/getThem')}}">Thêm dịch vụ</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -1,11 +1,10 @@
+@extends('datlich.layout_lichdat')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<meta charset="utf-8">
-</head>
-<body>
+@section('title')
+	<title>Bước 1</title>
+@endsection
+
+@section('content')
 	<form action="lichdat2" method="post" id="formlichdat2">
 		{{csrf_field()}}
 		<h2>Chọn salon gần bạn</h2>
@@ -28,8 +27,9 @@
 
 		<input type="submit" name="tieptheo" value="Tiếp theo">
 	</form>
-</body>
+@endsection
 
+@section('script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -58,4 +58,4 @@
 		
 	});
 </script>
-</html>
+@endsection

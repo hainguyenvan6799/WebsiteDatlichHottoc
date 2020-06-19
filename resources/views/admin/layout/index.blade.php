@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
     <title>Admin-Quản lý</title>
 
@@ -69,6 +68,7 @@
     </script>
     <script type="text/javascript" language="javascript" src="admin_layout/ckeditor/ckeditor.js" ></script>
     <script type="text/javascript">
+        //function them va sua
         function alertBox(form, text)
         {
             form.addEventListener('submit', function(event) {
@@ -78,6 +78,19 @@
                 form.submit();
             }
         });
+        }
+
+        //function xoa
+        function xoa(){
+            if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
+            {
+                var id = document.getElementById('id_dv').value;
+                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/dichvu/xoa/"+id);
+            }
+            else
+            {
+                document.getElementById('xoa').removeAttribute('href');
+            }
         }
     </script>
     @yield('script')
