@@ -6,6 +6,7 @@
   $start = 0;
   $stop = 0;
   use App\lichlamviec_nhanvien;
+  use App\LichDat;
    $now = Carbon\Carbon::now()->toDateString();
       $nextdate = Carbon\Carbon::tomorrow()->toDateString();
       $nextnextdate = Carbon\Carbon::tomorrow()->addDays()->toDateString(); 
@@ -82,6 +83,7 @@ body {font-family: Arial;}
 <div id="{{$dateArray[$i]}}" class="tabcontent">
   <?php
     $giolamviec = lichlamviec_nhanvien::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->get()->toArray();
+    
     if(!$giolamviec)
     {
       $start = '0:0';
@@ -94,8 +96,11 @@ body {font-family: Arial;}
     }
     $timeslot = CalendarController::timeslot($duration, $cleanup, $start, $end);
     foreach($timeslot as $t){ ?>
+    
       <div class="col-md-2" id="timeslot">
         @if($t <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour && $dateArray[$i] <= $now) 
+          <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
+        @elseif(LichDat::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->where('thoigian', $t)->get()->toArray())
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
         @else
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" data-datebook="{{$dateArray[$i]}}" data-idnhanvien="{{$id_nhanvien}}" title="Book now">{{$t}}</button>

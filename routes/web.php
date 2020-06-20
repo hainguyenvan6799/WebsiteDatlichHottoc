@@ -210,3 +210,11 @@ Route::get('dbtable', function(){
 		dd($data);
 	}
 });
+
+
+//get nhân viên của cửa hàng
+Route::get('getNhanvienCuahang/{id_cuahang}', 'lichdatController@getNhanvienCuahang')->name('getNhanvienCuahang');
+//get lịch làm việc của nhân viên nào đó
+Route::get('getLichlamviecNhanvien/{id_nhanvien}', 'lichdatController@getLichlamviecNhanvien')->name('getLichlamviecNhanvien');
+//get khung giờ làm việc của nhân viên trong ngày đó
+Route::get('getKhunggio/{ngay}/{idnv}', 'lichdatController@getKhunggio')->name('getKhunggio');
