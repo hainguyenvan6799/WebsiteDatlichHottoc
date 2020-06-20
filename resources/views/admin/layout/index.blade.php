@@ -81,17 +81,6 @@
         }
 
         //function xoa
-        function xoa(){
-            if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
-            {
-                var id = document.getElementById('id_dv').value;
-                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/dichvu/xoa/"+id);
-            }
-            else
-            {
-                document.getElementById('xoa').removeAttribute('href');
-            }
-        }
     </script>
     @yield('script')
 </body>

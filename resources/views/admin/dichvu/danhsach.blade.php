@@ -39,7 +39,7 @@
                                 <td>{{$dv->mota}}</td>
                                 <td><img src="../public/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
                                 <td>{{$dv->loaidichvu->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="id_dv" id="id_dv" value="{{$dv->id}}"></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="idnay" id="idnay" value="{{$dv->id}}"></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{URL::to('admin/dichvu/sua/'.$dv->id.'')}}">Edit</a></td>
                             </tr>
                             <?php } ?>
@@ -53,3 +53,20 @@
         </div>
 
 @endsection
+
+@section('script')
+    <script type="text/javascript">
+        function xoa(){
+            if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
+            {
+                var id = document.getElementById('id_dv').value;
+                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/dichvu/xoa/"+id);
+            }
+            else
+            {
+                document.getElementById('xoa').removeAttribute('href');
+            }
+        }
+        
+    </script>
+@endsection 

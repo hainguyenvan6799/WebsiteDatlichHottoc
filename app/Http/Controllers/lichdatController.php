@@ -69,10 +69,54 @@ class lichdatController extends Controller
         $cuahang = CuaHang::all();
         return view('admin.lichdat.them', ['lichdat'=>$lichdat, 'cuahang'=>$cuahang]);
     }
+
+    public function postThem(Request $request)
+    {
+        $lichdat = new LichDat;
+        $lichdat->tenkhachhang = $request->txtTen;
+        $lichdat->nhanvien_id = $request->chonnhanvien;
+        $lichdat->dichvu_id = 1;
+        $lichdat->ngay = $request->chon_ngaylamviec;
+        $lichdat->thoigian = $request->chon_khunggio;
+        $lichdat->id_cuahang = $request->chon_cuahang;
+        $lichdat->hienthi = 1;
+        $lichdat->save();
+        return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Thêm mới lịch đặt thành công.');
+    }
+
+    public function getXoa($id){
+        $lichdat = LichDat::find($id);
+        $lichdat->hienthi = 0;
+        $lichdat->save();
+        return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Xóa lịch đặt thành công.');
+    }
+
+    public function getSua($id)
+    {
+        $lichdat = LichDat::find($id);
+        $cuahang = CuaHang::all();
+        return view('admin.lichdat.sua', ['lichdat'=>$lichdat, 'cuahang'=>$cuahang]);
+    }
+    public function postSua(Request $request, $id)
+    {
+        $lichdat = LichDat::find($id);
+        $lichdat->tenkhachhang = $request->txtTen;
+        $lichdat->nhanvien_id = $request->chonnhanvien;
+        $lichdat->dichvu_id = 1;
+        $lichdat->ngay = $request->chon_ngaylamviec;
+        $lichdat->thoigian = $request->chon_khunggio;
+        $lichdat->id_cuahang = $request->chon_cuahang;
+        $lichdat->hienthi = 1;
+        $lichdat->save();
+        return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Sửa lịch đặt thành công.');
+    }
+
+
+    // -------------------////////////////////////////////
     public function getNhanvienCuahang($id_cuahang)
     {
         $nhanvien = NhanVien::where('cuahang_id', $id_cuahang)->get();
-        echo '<select id="chonnhanvien"><option>Chọn nhân viên</option>';
+        echo '<select id="chonnhanvien" name="chonnhanvien"><option>Chọn nhân viên</option>';
         foreach($nhanvien as $nv){
           echo '<option value="'.$nv->id.'">'.$nv->user->name .' - ' . $nv->id.'</option>';
         }  
@@ -89,7 +133,7 @@ class lichdatController extends Controller
     public function getLichlamviecNhanvien($id_nhanvien)
     {
         $lichlamviec = lichlamviec_nhanvien::where('nhanvien_id', $id_nhanvien)->get();
-        echo '<select id="chon_ngaylamviec" data-idnv="'.$id_nhanvien.'"><option>Chọn ngày làm việc</option>';
+        echo '<select id="chon_ngaylamviec" data-idnv="'.$id_nhanvien.'" name="chon_ngaylamviec"><option>Chọn ngày làm việc</option>';
             foreach($lichlamviec as $llv)
             {   
                 if($llv->ngay >= date('Y-m-d H:i:s')){
@@ -112,7 +156,6 @@ class lichdatController extends Controller
         $duration = 60;
         $cleanup = 0;
         $giolamviec = lichlamviec_nhanvien::where('nhanvien_id', $idnv)->where('ngay', $ngay)->get();
-
         if(!$giolamviec)
         {
           $start = '0:0';
@@ -125,13 +168,17 @@ class lichdatController extends Controller
         }
 
         $timeslot = CalendarController::timeslot($duration, $cleanup, $start, $end);
-        echo '<select>';
+        echo '<select name="chon_khunggio">';
         foreach($timeslot as $t)
         {
-            $giolamviec_daduocdangky = LichDat::where('nhanvien_id', $idnv)->where('ngay', $ngay)->where('thoigian', $t)->get();
-            if($t > Carbon::now('Asia/Ho_Chi_Minh')->hour || !$giolamviec_daduocdangky)
+            $giolamviec_daduocdangky = LichDat::where('nhanvien_id', $idnv)->where('ngay', $ngay)->where('thoigian', $t)->get()->toArray();
+            if($t > Carbon::now('Asia/Ho_Chi_Minh')->hour || $ngay != Carbon::now())
             {
-                echo '<option>'.$t.'</option>';
+                if(!$giolamviec_daduocdangky)
+                {
+                    echo '<option value="'.$t.'">'.$t.'</option>';
+                }
+                
             }
         }
         echo '</select>';
