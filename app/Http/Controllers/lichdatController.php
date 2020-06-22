@@ -15,23 +15,18 @@ use Carbon\Carbon;
 class lichdatController extends Controller
 {
     //
-    public function lichdat1(Request $request){
-    	$sdt = $request->appointment_sdt;
+    public function lichdat1(){
     	$thanhpho = CuaHang::select('thanhpho')->distinct()->get()->toArray();
-        session()->put('sdt', $sdt);
     	return view('datlich.lichdat1', ['thanhpho'=>$thanhpho]);
     }
 
-    public function lichdat2(Request $request){
-        $id_cuahang = $request->id_cuahang;
-        session()->put('id_cuahang', $id_cuahang);
+    public function lichdat2($id_cuahang){
         $nhanvien = NhanVien::where('cuahang_id', $id_cuahang)->get();
         return view('datlich.lichdat2', ['nhanvien'=>$nhanvien]);
     }
-    public function lichdat3(Request $request)
+    public function lichdat3($id_nhanvien)
     {
         $dichvu = Dichvu::all();
-        $id_nhanvien = $request->chonnhanvien;
         return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien, 'dichvu'=>$dichvu]);
     }
 

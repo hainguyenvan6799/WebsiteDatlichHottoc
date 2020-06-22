@@ -16,14 +16,6 @@
       //echo '<script>alert(document.cookie);</script>';
       //echo $_COOKIE['abc'];
 ?>
-
-@extends('datlich.layout_lichdat')
-
-@section('title')
-  <title>Bước 3 - Chọn khung giờ</title>
-@endsection
-
-@section('css')
 <style>
 body {font-family: Arial;}
 
@@ -62,11 +54,10 @@ body {font-family: Arial;}
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  width: 100%;
+  height: 500px;
 }
 </style>
-@endsection
-
-@section('content')
 
 <h2>Tabs</h2>
 <p>Click on the buttons inside the tabbed menu:</p>
@@ -97,7 +88,7 @@ body {font-family: Arial;}
     $timeslot = CalendarController::timeslot($duration, $cleanup, $start, $end);
     foreach($timeslot as $t){ ?>
     
-      <div class="col-md-2" id="timeslot">
+      <div class="col-md-6" id="timeslot">
         @if($t <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour && $dateArray[$i] <= $now) 
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
         @elseif(LichDat::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->where('thoigian', $t)->get()->toArray())
@@ -170,12 +161,10 @@ body {font-family: Arial;}
       @endforeach
 </select>
 
-
-@endsection
 {{-- && lichlamviec_nhanvien::where('id_nhanvien', $nv->id)->where('ngaylamviec', ) --}}
-@section('script')
 <script>
 function openCity(evt, cityName) {
+  evt.preventDefault();
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -187,6 +176,7 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+  
   
 }
 
@@ -210,5 +200,3 @@ document.cookie = "abc=VanHai";
     $('#id_dichvu').val(id_dichvu);
   });
 </script>
-
-@endsection

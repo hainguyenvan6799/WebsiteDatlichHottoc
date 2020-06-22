@@ -22,13 +22,14 @@ class ajaxController extends Controller
     	$cuahang = CuaHang::where('quan', $q)->where('thanhpho', $tp)->get()->toArray();
     	foreach($cuahang as $ch)
     	{
-    		echo '<h2>'.$ch['tencuahang'].'</h2>';
-    		echo '<br>';
-    		echo '<h3>'.$ch['sdt'].'</h3>';
+            echo '<div class="col-md-6" style="border: 1px solid red;">';
+    		
+    		echo '<input type="radio" name="id_cuahang" id="'.$ch['id'].'" class="id_cuahang checkbox-tools" value="'.$ch['id'].'" />';
+            echo '<label class="for-checkbox-tools" for="'.$ch['id'].'"><i class="uil uil-line-alt"></i><h2>'.$ch['tencuahang'].'</h2></label>';
+            echo '<br>';
             $distance = $this->distanceHaversineFormula($lat, $lng, $ch['lat'], $ch['lng']);
             echo '<h2>Cách khoảng '.$distance.' km</h2>';
-    		echo '<input type="radio" name="id_cuahang" class="id_cuahang" value="'.$ch['id'].'" />';
-            
+            echo '</div>';
     	}
     }
     public function distanceHaversineFormula($lat1, $lng1, $lat2, $lng2){

@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\CuaHang;
 Route::get('/', function () {
     return view('pages.index');
 });
@@ -192,10 +192,13 @@ Route::view('googlemap', 'googlemap');
 
 //đặt lịch nào
 
-Route::post('lichdat1', 'lichdatController@lichdat1');
+Route::get('lichdat1', function(){
+	$thanhpho = CuaHang::select('thanhpho')->distinct()->get()->toArray();
+	return view('datlich.lichdat1', ['thanhpho'=>$thanhpho]);
+});
 
-Route::post('lichdat2', 'lichdatController@lichdat2');
-Route::post('lichdat3', 'lichdatController@lichdat3');
+Route::get('lichdat2/{id_cuahang}', 'lichdatController@lichdat2');
+Route::get('lichdat3/{id_nhanvien}', 'lichdatController@lichdat3');
 
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');
@@ -218,3 +221,7 @@ Route::get('getNhanvienCuahang/{id_cuahang}', 'lichdatController@getNhanvienCuah
 Route::get('getLichlamviecNhanvien/{id_nhanvien}', 'lichdatController@getLichlamviecNhanvien')->name('getLichlamviecNhanvien');
 //get khung giờ làm việc của nhân viên trong ngày đó
 Route::get('getKhunggio/{ngay}/{idnv}', 'lichdatController@getKhunggio')->name('getKhunggio');
+
+Route::get('multistepform', function(){
+	return view('datlich.multistepform');
+});
