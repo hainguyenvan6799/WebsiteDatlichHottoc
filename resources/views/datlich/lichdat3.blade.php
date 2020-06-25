@@ -55,17 +55,14 @@ body {font-family: Arial;}
   border: 1px solid #ccc;
   border-top: none;
   width: 100%;
-  height: 500px;
+  height: auto;
 }
 </style>
 
-<h2>Tabs</h2>
-<p>Click on the buttons inside the tabbed menu:</p>
-
 <div class="tab">
-  <button class="tablinks active" onclick="openCity(event, '{{$now}}')" id="defaultOpen">Ngày hôm nay {{$now}}</button>
-  <button class="tablinks" onclick="openCity(event, '{{$nextdate}}')">Ngày mai {{$nextdate}}</button>
-  <button class="tablinks" onclick="openCity(event, '{{$nextnextdate}}')">Ngày kia {{$nextnextdate}}</button>
+  <button class="tablinks active col-md-4" onclick="openCity(event, '{{$now}}')" id="defaultOpen">Ngày hôm nay <br> {{$now}}</button>
+  <button class="tablinks col-md-4" onclick="openCity(event, '{{$nextdate}}')">Ngày mai <br>{{$nextdate}}</button>
+  <button class="tablinks col-md-4" onclick="openCity(event, '{{$nextnextdate}}')">Ngày kia <br>{{$nextnextdate}}</button>
 </div>
 
 <?php $dateArray = [$now, $nextdate, $nextnextdate];
@@ -88,7 +85,7 @@ body {font-family: Arial;}
     $timeslot = CalendarController::timeslot($duration, $cleanup, $start, $end);
     foreach($timeslot as $t){ ?>
     
-      <div class="col-md-6" id="timeslot">
+      <div id="timeslot">
         @if($t <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour && $dateArray[$i] <= $now) 
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
         @elseif(LichDat::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->where('thoigian', $t)->get()->toArray())
@@ -155,11 +152,7 @@ body {font-family: Arial;}
 
 <?php } ?>
 
-<select name="dichvu" id="dichvu">
-      @foreach($dichvu as $dv)
-        <option value="{{$dv->id}}">{{$dv->tendichvu}}</option>
-      @endforeach
-</select>
+
 
 {{-- && lichlamviec_nhanvien::where('id_nhanvien', $nv->id)->where('ngaylamviec', ) --}}
 <script>

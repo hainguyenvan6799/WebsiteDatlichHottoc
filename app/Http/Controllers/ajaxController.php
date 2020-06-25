@@ -22,7 +22,7 @@ class ajaxController extends Controller
     	$cuahang = CuaHang::where('quan', $q)->where('thanhpho', $tp)->get()->toArray();
     	foreach($cuahang as $ch)
     	{
-            echo '<div class="col-md-6" style="border: 1px solid red;">';
+            echo '<div class="col-md-6" style="border: 1px solid green;">';
     		
     		echo '<input type="radio" name="id_cuahang" id="'.$ch['id'].'" class="id_cuahang checkbox-tools" value="'.$ch['id'].'" />';
             echo '<label class="for-checkbox-tools" for="'.$ch['id'].'"><i class="uil uil-line-alt"></i><h2>'.$ch['tencuahang'].'</h2></label>';

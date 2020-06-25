@@ -25,16 +25,25 @@ class dichvuController extends Controller
 
     //post
     public function postThem(Request $request){
+        $ktradichvu = Dichvu::where('tendichvu', $request->txtTen)->get();
+        foreach($ktradichvu as $kt)
+        {
+            if($kt->id)
+            {
+                return redirect()->route('dichvu/getThem')->with('loi', 'Tên dịch vụ đã tồn tại.');
+            }
+        }
         $this->validate($request,
             [
-                'txtTen'=>'required',
-                'txtGia'=>'required',// Thêm vào kiểm tra phải là số và lớn hơn 0
+                'txtGia'=>'gt:0|numeric'// Thêm vào kiểm tra phải là số và lớn hơn 0
             ],
             [
-                'txtTen.required'=>'Bạn cần nhập tên dịch vụ.',
-                'txtGia.required'=>'Bạn cần nhập giá.'
+                'txtGia.gt'=>'Bạn cần nhập giá là một số > 0.',
+                'txtGia.numeric'=>'Bạn cần nhập giá là một chữ số.'
             ]
         );
+        
+        
         $dichvu = new Dichvu;
         $dichvu->tendichvu = $request->txtTen;
         $dichvu->gia = $request->txtGia;
@@ -73,14 +82,21 @@ class dichvuController extends Controller
 
     public function postSua($id, Request $request)
     {
+        $ktradichvu = Dichvu::where('tendichvu', $request->txtTen)->get();
+        foreach($ktradichvu as $kt)
+        {
+            if($kt->id)
+            {
+                return redirect()->route('dichvu/getThem')->with('loi', 'Tên dịch vụ đã tồn tại.');
+            }
+        }
         $this->validate($request,
             [
-                'txtTen'=>'required',
-                'txtGia'=>'required',
+                'txtGia'=>'gt:0|numeric'
             ],
             [
-                'txtTen.required'=>'Bạn cần nhập tên dịch vụ.',
-                'txtGia.required'=>'Bạn cần nhập giá của dịch vụ'
+                'txtGia.gt'=>'Bạn cần nhập giá là một số > 0.',
+                'txtGia.numeric'=>'Bạn cần nhập giá là một số.'
             ]
         );
         $dichvu = Dichvu::find($id);

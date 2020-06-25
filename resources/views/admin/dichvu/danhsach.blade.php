@@ -39,7 +39,7 @@
                                 <td>{{$dv->mota}}</td>
                                 <td><img src="../public/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
                                 <td>{{$dv->loaidichvu->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="idnay" id="idnay" value="{{$dv->id}}"></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a style="cursor: pointer;" id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="idnay" id="idnay" value="{{$dv->id}}"></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{URL::to('admin/dichvu/sua/'.$dv->id.'')}}">Edit</a></td>
                             </tr>
                             <?php } ?>

@@ -19,8 +19,8 @@
 			    </button>
 			    <div class="dropdown-menu" style="border: 2px solid yellow; position: absolute; top: 90px; right: 15px; left: 1100px;">
 			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
-			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
-			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
+			      {{-- <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
+			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a> --}}
 			    </div>
 	          		
 	          	@else

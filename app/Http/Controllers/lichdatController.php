@@ -26,10 +26,12 @@ class lichdatController extends Controller
     }
     public function lichdat3($id_nhanvien)
     {
-        $dichvu = Dichvu::all();
-        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien, 'dichvu'=>$dichvu]);
+        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien]);
     }
-
+    public function lichdat4(){
+        $dichvu = Dichvu::all();
+        return view('datlich.lichdat4', ['dichvu'=>$dichvu]);
+    }
     public function formBooking(Request $request){
         $datebook = $request->datebook;
         $tenkhachhang = $request->ten;

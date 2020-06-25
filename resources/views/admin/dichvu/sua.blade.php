@@ -26,12 +26,12 @@
                             @endif
                             <div class="form-group">
                                 <label>Tên dịch vụ</label>
-                                <input class="form-control" name="txtTen" placeholder="Nhập tên dịch vụ" value="{{$dichvu->tendichvu}}" />
+                                <input class="form-control" name="txtTen" placeholder="Nhập tên dịch vụ" value="{{$dichvu->tendichvu}}" required="" />
                             </div>
 
                             <div class="form-group">
                                 <label>Giá</label>
-                                <input class="form-control" name="txtGia" placeholder="Nhập giá dịch vụ" value="{{$dichvu->gia}}" />
+                                <input class="form-control" name="txtGia" placeholder="Nhập giá dịch vụ" value="{{$dichvu->gia}}" required="" />
                             </div>
 
                             <div class="form-group">

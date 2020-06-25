@@ -36,17 +36,17 @@
                             {{csrf_field()}}
                             <div class="form-group">
                                 <label>Tên dịch vụ</label>
-                                <input class="form-control" name="txtTen" placeholder="Nhập tên dịch vụ" />
+                                <input class="form-control" name="txtTen" placeholder="Nhập tên dịch vụ" required="" />
                             </div>
 
                             <div class="form-group">
                                 <label>Giá</label>
-                                <input class="form-control" name="txtGia" placeholder="Nhập giá dịch vụ" />
+                                <input class="form-control" name="txtGia" placeholder="Nhập giá dịch vụ" required="" />
                             </div>
 
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <textarea name="txtMota" class="form-control"></textarea>
+                                <textarea name="txtMota" class="form-control" required=""></textarea>
                             </div>
 
                             <div class="form-group">

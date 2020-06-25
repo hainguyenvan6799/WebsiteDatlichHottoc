@@ -199,6 +199,7 @@ Route::get('lichdat1', function(){
 
 Route::get('lichdat2/{id_cuahang}', 'lichdatController@lichdat2');
 Route::get('lichdat3/{id_nhanvien}', 'lichdatController@lichdat3');
+Route::get('lichdat4', 'lichdatController@lichdat4');
 
 //ajax nào các bạn
 Route::get('ajax/chonthanhpho/{tp}', 'ajaxController@chonquan');
@@ -223,5 +224,5 @@ Route::get('getLichlamviecNhanvien/{id_nhanvien}', 'lichdatController@getLichlam
 Route::get('getKhunggio/{ngay}/{idnv}', 'lichdatController@getKhunggio')->name('getKhunggio');
 
 Route::get('multistepform', function(){
-	return view('datlich.multistepform');
+	return view('datlich.datlichnhieubuoc');
 });
