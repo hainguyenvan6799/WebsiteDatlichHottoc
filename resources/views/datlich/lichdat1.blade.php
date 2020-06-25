@@ -11,7 +11,7 @@
 			<option selected="">Chọn Quận/Huyện</option>
 		</select>
 
-		<div id="cuahang" class="col-md-12">
+		<div id="cuahang" class="col-md-12" style="height: 200px; overflow: auto;">
 
 		</div>
 </div>
