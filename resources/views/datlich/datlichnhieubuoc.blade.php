@@ -19,7 +19,7 @@
 		    position: relative;
 		    margin-top: 30px;
 		    width: 100%;
-		    height: 500px;
+		    height: 700px;
 		    margin-bottom: 30px;
 		    padding: 15px;
 
@@ -34,6 +34,7 @@
 		    width: 80%;
 		    margin: 0 10%;
 		    border: 1px solid black;
+		    height: auto;
 
 		    /*stacking fieldsets above each other*/
 		    position: relative;

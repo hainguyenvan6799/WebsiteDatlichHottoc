@@ -57,6 +57,18 @@ body {font-family: Arial;}
   width: 100%;
   height: auto;
 }
+#timeslot{
+  padding-left: 60px;
+}
+#timeslot button{
+  width: auto;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  font-size: 20px;
+
+}
 </style>
 
 <div class="tab">
@@ -68,7 +80,7 @@ body {font-family: Arial;}
 <?php $dateArray = [$now, $nextdate, $nextnextdate];
   for($i = 0; $i < count($dateArray); $i++) {?>
 
-<div id="{{$dateArray[$i]}}" class="tabcontent">
+<div id="{{$dateArray[$i]}}" class="tabcontent" style="height: 300px; overflow: auto;">
   <?php
     $giolamviec = lichlamviec_nhanvien::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->get()->toArray();
     

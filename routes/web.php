@@ -226,3 +226,6 @@ Route::get('getKhunggio/{ngay}/{idnv}', 'lichdatController@getKhunggio')->name('
 Route::get('multistepform', function(){
 	return view('datlich.datlichnhieubuoc');
 });
+Route::get('testdt', function(){
+	return view('datlich.test');
+});

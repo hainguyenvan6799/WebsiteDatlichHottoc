@@ -1,4 +1,4 @@
-    <div class="col-md-12" id="nhanvien">
+    <div class="col-md-12" id="nhanvien" style="height: 200px; overflow: auto;">
         @foreach($nhanvien as $nv)
         <div class="col-md-6">
           {{-- <input type="radio" name="chonnhanvien" class="chonnhanvien checkbox-budget" id="{{$nv->id}}" value="{{$nv->id}}">
