@@ -8,7 +8,7 @@
 /*basic reset*/
 * {
     margin: 0;
-    padding: 10;
+    padding: 0;
 }
 
 html {
@@ -461,6 +461,3 @@ $(".submit").click(function(){
     return false;
 });
 </script>
-
-
-<abc>
