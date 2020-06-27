@@ -8,7 +8,7 @@
 /*basic reset*/
 * {
     margin: 0;
-    padding: 0;
+    padding: 10;
 }
 
 html {
