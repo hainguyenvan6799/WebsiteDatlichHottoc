@@ -17,16 +17,19 @@ class lichdatController extends Controller
     //
     public function lichdat1(){
     	$thanhpho = CuaHang::select('thanhpho')->distinct()->get()->toArray();
-    	return view('datlich.lichdat1', ['thanhpho'=>$thanhpho]);
+        $cuahang = CuaHang::all();
+    	return view('datlich.lichdat1', ['thanhpho'=>$thanhpho, 'cuahang'=>$cuahang]);
     }
 
     public function lichdat2($id_cuahang){
+        session()->put('id_cuahang', $id_cuahang);
         $nhanvien = NhanVien::where('cuahang_id', $id_cuahang)->get();
         return view('datlich.lichdat2', ['nhanvien'=>$nhanvien]);
     }
     public function lichdat3($id_nhanvien)
     {
-        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien]);
+        $dichvu = Dichvu::all();
+        return view('datlich.lichdat3', ['id_nhanvien'=>$id_nhanvien, 'dichvu'=>$dichvu]);
     }
     public function lichdat4(){
         $dichvu = Dichvu::all();
@@ -39,10 +42,11 @@ class lichdatController extends Controller
         $timeslot = $request->timeslot;
         $id_cuahang = session()->get('id_cuahang');
         $email = $request->email;
-        $sdt = session()->get('sdt');
+        // $sdt = session()->get('sdt');
         $id_dichvu = $request->id_dichvu;
 
         $lichdat = new LichDat;
+        $lichdat->ngay = $datebook;
         $lichdat->nhanvien_id = $id_nhanvien;
         $lichdat->tenkhachhang = $tenkhachhang;
         $lichdat->dichvu_id = $id_dichvu;

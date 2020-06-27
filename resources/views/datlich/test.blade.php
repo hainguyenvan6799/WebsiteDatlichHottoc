@@ -1,5 +1,6 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<base href="{{asset('')}}">
 <style type="text/css">
 /*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -29,7 +30,7 @@ body {
     text-align: center;
     position: relative;
     margin-top: 30px;
-    width: 800px;
+    width: 670px;
     padding: 10px;
 }
 
@@ -53,7 +54,7 @@ body {
 }
 
 /*inputs*/
-#msform input, #msform select {
+#msform input {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 15px;
@@ -64,7 +65,17 @@ body {
     color: #2C3E50;
     font-size: 13px;
 }
-
+#msform select{
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	width: 49%;
+	height: auto;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+    font-size: 13px;
+}
 #msform input:focus, #msform select:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
@@ -110,15 +121,18 @@ body {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
 }
 
-#cuahang{
+#cuahang, #nhanvien{
 	height: 350px;
 	overflow: auto; 
 	padding-top: 30px;
 	width: 100%;
 	background-color: #E6E6E6;
+	margin-top: 15px;
+	border-radius: 10px;
+
 }
 #cuahang .cuahang{
-	width: 49%;
+	width: 48.5%;
 	height: auto;
 	float: left;
 	margin-right: 5px;
@@ -157,7 +171,7 @@ body {
     color: white;
     text-transform: uppercase;
     font-size: 9px;
-    width: 25%;
+    width: 33.33%;
     float: left;
     position: relative;
     letter-spacing: 1px;
@@ -218,20 +232,20 @@ body {
 	position: relative;
 	display: inline-block;
 	padding: 20px;
-	width: 110px;
-	font-size: 14px;
-	line-height: 20px;
+	width: auto;
+	font-size: 13px;
 	letter-spacing: 1px;
 	margin: 0 auto;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 10px;
 	text-align: center;
-	border-radius: 4px;
+	border-radius: 7px;
 	overflow: hidden;
 	cursor: pointer;
 	text-transform: uppercase;
-	color: var(--white);
+	color: white;
+	font-family: montserrat;
 	-webkit-transition: all 300ms linear;
 	transition: all 300ms linear; 
 }
@@ -241,8 +255,9 @@ body {
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 .checkbox-tools:checked + label{
-	background-color: green;
-	color: black;
+	background-color: yellow;
+	color: brown;
+	text-shadow: 5px;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 .checkbox-tools:not(:checked) + label:hover{
@@ -277,23 +292,30 @@ body {
                 <li class="active">Chọn cửa hàng</li>
                 <li>Chọn nhân viên</li>
                 <li>Chọn lịch</li>
-                <li>Chọn dịch vụ</li>
             </ul>
             <!-- fieldsets -->
             <fieldset>
                 <h2 class="fs-title">Chọn cửa hàng</h2>
                 <h3 class="fs-subtitle">Chọn cửa hàng gần nhất mà bạn muốn.</h3>
                 <div id="Buoc1">
-
+                	<h2>Bạn cần chọn</h2>
                 </div>
                 <input type="button" name="next" class="next action-button quaBuoc2" value="Next"/>
             </fieldset>
             <fieldset>
                 <h2 class="fs-title">Chọn nhân viên</h2>
                 <h3 class="fs-subtitle">Nhân viên toàn trai xinh, gái đẹp cả thôi.</h3>
+
                 <div id="Buoc2">
                 	
                 </div>
+
+                {{-- <div class="nhanvien">
+                	<input type="radio" name="chonnhanvien" id="" class="chonnhanvien checkbox-tools" value="abc" />
+
+          <label class="for-checkbox-tools" for=""><i class="uil uil-line-alt"></i><img src="{{URL::to('images/nhanvien/kai-seidler.jpg')}}" alt="123"><h2>abc</h2></label>
+                </div> --}}
+
                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                 <input type="button" name="next" class="next action-button quaBuoc3" value="Next"/>
             </fieldset>
@@ -303,16 +325,7 @@ body {
                 <div id="Buoc3">
                 	
                 </div>
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                <input type="button" name="next" class="next action-button quaBuoc4" value="Next"/>
-            </fieldset>
-            <fieldset>
-                <h2 class="fs-title">Chọn dịch vụ</h2>
-                <h3 class="fs-subtitle">Dịch vụ nào cũng tốt hết nè</h3>
-                <div id="Buoc4">
-                	
-                </div>
-                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                 <input type="submit" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
         </form>
@@ -333,15 +346,25 @@ body {
 
 		$('.quaBuoc2').on('click', function(){
 			var id_cuahang = $('input[name="id_cuahang"]:checked').val();
-			
+			if(id_cuahang == undefined)
+			{
+				$('#Buoc2').html('<h2>Bạn cần chọn cửa hàng.</h2>');
+				return false;
+
+			}
 			$.get('lichdat2/'+id_cuahang, function(data){
-				$('#Buoc2').html(data);		
+				$('#Buoc2').html(data);
 			});
 		});
 
 		$('.quaBuoc3').on('click', function(){
 			var id_nhanvien = $('input[name="chonnhanvien"]:checked').val();
-			
+			if(id_nhanvien == undefined)
+			{
+				$('#Buoc3').html('<h2>Bạn cần chọn nhân viên.</h2>');
+				return false;
+
+			}
 			$.get('lichdat3/'+id_nhanvien, function(data){
 				$('#Buoc3').html(data);		
 			});
@@ -360,8 +383,7 @@ body {
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
-var animating; //flag to prevent quick multi-click glitches
-
+var animating; //flag to prevent quick multi-click glitches	
 $(".next").click(function(){
     if(animating) return false;
     animating = true;
@@ -439,3 +461,6 @@ $(".submit").click(function(){
     return false;
 });
 </script>
+
+
+<abc>

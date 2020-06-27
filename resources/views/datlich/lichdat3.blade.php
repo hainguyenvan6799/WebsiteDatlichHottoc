@@ -100,7 +100,7 @@ body {font-family: Arial;}
       <div id="timeslot">
         @if($t <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour && $dateArray[$i] <= $now) 
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
-        @elseif(LichDat::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->where('thoigian', $t)->get()->toArray())
+        @elseif(LichDat::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->where('thoigian', $t)->where('hienthi', 1)->get()->toArray())
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
         @else
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" data-datebook="{{$dateArray[$i]}}" data-idnhanvien="{{$id_nhanvien}}" title="Book now">{{$t}}</button>
@@ -143,6 +143,14 @@ body {font-family: Arial;}
                         <div class="form-group">
                           <label for="email">Email</label>
                           <input type="email" name="email" id="email" class="form-control" required="">
+                        </div>
+                        <div class="form-group">
+                          <label for="dichvu">Chọn dịch vụ</label>
+                          <select name="dichvu" id="dichvu" class="form-control" style="width: 100%;">
+                              @foreach($dichvu as $dv)
+                                <option value="{{$dv->id}}">{{$dv->tendichvu}}</option>
+                              @endforeach
+                        </select>
                         </div>
                         <div class="form-group">
                           <input class="btn btn-primary" type="submit" name="submit" value="Book">

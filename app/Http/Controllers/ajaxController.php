@@ -19,7 +19,15 @@ class ajaxController extends Controller
     }
 
     public function choncuahang($tp, $q, $lat, $lng){
-    	$cuahang = CuaHang::where('quan', $q)->where('thanhpho', $tp)->get()->toArray();
+        $cuahang = [];
+        if($tp == 0 && $q ==0)
+        {
+            $cuahang = CuaHang::all();
+        }
+        else
+        {
+            $cuahang = CuaHang::where('quan', $q)->where('thanhpho', $tp)->get()->toArray();
+        }
     	foreach($cuahang as $ch)
     	{
             echo '<div class="cuahang">';
@@ -42,6 +50,6 @@ class ajaxController extends Controller
         $a = sin($deltaLat/2)*sin($deltaLat/2)+cos($l1)*cos($l2)*sin($deltaLng/2)*sin($deltaLng/2);
         $c = 2*atan2(sqrt($a), sqrt(1-$a));
         $d = $r*$c;
-        return $d;
+        return round($d, 2);
     }
 }

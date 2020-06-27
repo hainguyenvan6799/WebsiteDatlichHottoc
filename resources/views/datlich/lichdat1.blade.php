@@ -1,16 +1,24 @@
+<style type="text/css">
+	.selected-option{
+		font-size: 15px;
+		background-color: pink;
+		color: black;
+	}
+</style>
 <div class="row">
-		<select name="thanhpho" id="chon_thanhpho" class="tieude col-md-5 m-auto">
+		<select name="thanhpho" id="chon_thanhpho" class="tieude">
 
-			<option selected="">Chọn Tỉnh/TP</option>
+			<option selected="" class="selected-option">Chọn Tỉnh/TP</option>
 			@foreach($thanhpho as $tp)
-				<option>{{$tp['thanhpho']}}</option>
+				<option class="selected-option">{{$tp['thanhpho']}}</option>
 			@endforeach
 			
 		</select>
-		<select name="quan" id="chon_quan" class="tieude col-md-5 m-auto">
+		<select name="quan" id="chon_quan" class="tieude">
 			<option selected="">Chọn Quận/Huyện</option>
 		</select>
 
+		
 		<div id="cuahang" class="col-md-12">
 
 		</div>
@@ -23,6 +31,10 @@
 					lat: position.coords.latitude,
 					lng: position.coords.longitude
 				};
+				$.get('ajax/choncuahang/0/0/'+pos.lat+'/'+pos.lng, function(data)
+				{
+					$('#cuahang').html(data);
+				});
 
 				$('#chon_thanhpho').on('change', function(){
 			//alert($(this).val());
