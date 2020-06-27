@@ -39,8 +39,8 @@
                                 <td>{{$dv->mota}}</td>
                                 <td><img src="../public/images/dichvu/{{$dv->anhdaidien}}" style="width: 200px;"></td>
                                 <td>{{$dv->loaidichvu->tenloai}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a style="cursor: pointer;" id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="idnay" id="idnay" value="{{$dv->id}}"></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{URL::to('admin/dichvu/sua/'.$dv->id.'')}}">Edit</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a class="xoa" style="cursor: pointer;" id="xoa" href="{{URL::to('admin/dichvu/xoa/'.$dv->id)}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{URL::to('admin/dichvu/sua/'.$dv->id)}}">Edit</a></td>
                             </tr>
                             <?php } ?>
                             @endforeach
@@ -56,17 +56,31 @@
 
 @section('script')
     <script type="text/javascript">
-        function xoa(){
-            if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
-            {
-                var id = document.getElementById('id_dv').value;
-                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/dichvu/xoa/"+id);
-            }
-            else
-            {
-                document.getElementById('xoa').removeAttribute('href');
-            }
-        }
+        $(document).ready(function(){
+            $('.xoa').on('click', function(){
+                // alert($(this).attr('href'));
+                if(!confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
+                {
+
+                    return false;
+                }
+                else
+                {
+
+                    return true;
+                }
+            });
+        });
+        // function xoa(id){
+        //     if(confirm("Bạn có chắc chắn muốn xóa loại dịch vụ này?"))
+        //     {
+        //         document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/dichvu/xoa/"+id);
+        //     }
+        //     else
+        //     {
+        //         document.getElementById('xoa').removeAttribute('href');
+        //     }
+        // }
         
     </script>
 @endsection 

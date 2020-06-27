@@ -52,7 +52,6 @@ class lichdatController extends Controller
         $lichdat->dichvu_id = $id_dichvu;
         $lichdat->thoigian = $timeslot;
         $lichdat->id_cuahang = $id_cuahang;
-        $lichdat->hienthi = 1;
         $lichdat->save();
 
         return redirect('/')->with('<script>alert("Đặt lịch thành công.");</script>');
@@ -80,15 +79,12 @@ class lichdatController extends Controller
         $lichdat->ngay = $request->chon_ngaylamviec;
         $lichdat->thoigian = $request->chon_khunggio;
         $lichdat->id_cuahang = $request->chon_cuahang;
-        $lichdat->hienthi = 1;
         $lichdat->save();
         return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Thêm mới lịch đặt thành công.');
     }
 
     public function getXoa($id){
-        $lichdat = LichDat::find($id);
-        $lichdat->hienthi = 0;
-        $lichdat->save();
+        LichDat::destroy($id);
         return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Xóa lịch đặt thành công.');
     }
 
@@ -107,7 +103,6 @@ class lichdatController extends Controller
         $lichdat->ngay = $request->chon_ngaylamviec;
         $lichdat->thoigian = $request->chon_khunggio;
         $lichdat->id_cuahang = $request->chon_cuahang;
-        $lichdat->hienthi = 1;
         $lichdat->save();
         return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Sửa lịch đặt thành công.');
     }

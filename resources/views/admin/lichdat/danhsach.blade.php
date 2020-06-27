@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                             @foreach($lichdat as $ld)
-                            @if($ld->hienthi == 1)
+                            
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ld->id}}</td>
                                 <td>{{$ld->nhanvien->user->name}}</td>
@@ -38,10 +38,9 @@
                                 <td>{{$ld->dichvu->tendichvu}}</td>
                                 <td>{{$ld->thoigian}}</td>
                                 <td>{{$ld->cuahang->tencuahang}}</td> 
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" onclick="xoa();"> Delete</a><input type="hidden" name="id_ld" id="id_ld" value="{{$ld->id}}"></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="{{URL::to('admin/lichdat/xoa/'.$ld->id)}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
                             </tr>
-                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -56,16 +55,19 @@
 @section('script')
     <script type="text/javascript">
         
-        function xoa(){
-            if(confirm("Bạn có chắc chắn muốn xóa lịch đặt này?"))
+        $(document).ready(function(){
+            $('.xoa').on('click', function(){
+                if(confirm("Bạn có chắc chắn muốn xóa lịch đặt này?"))
             {
-                var id = document.getElementById('id_ld').value;
-                document.getElementById('xoa').setAttribute('href',"/HotToc/public/admin/lichdat/xoa/"+id);
+                return true;
             }
             else
             {
-                document.getElementById('xoa').removeAttribute('href');
+                return false;
             }
-        }
+            });
+            
+        });
+            
     </script>
 @endsection
