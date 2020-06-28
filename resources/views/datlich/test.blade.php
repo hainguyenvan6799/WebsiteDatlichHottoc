@@ -1,3 +1,7 @@
+<?php 
+	$sdt = isset($_GET['appointment_sdt']) ? $_GET['appointment_sdt'] : '';
+	session()->put('sdt', $sdt);
+?>
 <title>Đặt lịch cắt tóc nào</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 <base href="{{asset('')}}">

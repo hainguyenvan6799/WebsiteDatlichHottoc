@@ -68,7 +68,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'], function(){
 
 	// });
 	Route::group(['prefix'=>'dashboard'], function(){
-		Route::get('index', 'dashboardController@getIndex');
+		Route::get('index', 'dashboardController@getIndex')->name('indexDashboard');
 	});
 
 	Route::group(['prefix'=>'loaidichvu'], function(){
@@ -181,7 +181,8 @@ Route::get('test', 'UserController@test');
 
 //Xác thực email và OTP
 Route::get('/xacthucEmail/{email}', 'UserController@getxacthucEmail');
-Route::post('/xacthucEmail', 'UserController@postxacthucEmail');
+Route::post('/xacthucEmail/{email}', 'UserController@postxacthucEmail');
+
 Route::get('/xacthucOTP', 'UserController@getxacthucOTP');
 Route::post('/xacthucOTP', 'UserController@postxacthucOTP');
 

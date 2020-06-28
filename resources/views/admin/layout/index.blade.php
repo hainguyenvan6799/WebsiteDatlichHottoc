@@ -82,6 +82,23 @@
 
         //function xoa
     </script>
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.xoa').on('click', function(){
+                if(confirm("Bạn có chắc chắn muốn xóa lịch đặt này?"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            });
+            
+        });
+            
+    </script>
     @yield('script')
 </body>
 

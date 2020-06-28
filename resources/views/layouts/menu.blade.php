@@ -7,18 +7,19 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="index" class="nav-link">Trang chủ</a></li>
-	        	<li class="nav-item"><a href="services" class="nav-link">Dịch vụ</a></li>
-	        	<li class="nav-item"><a href="gallery" class="nav-link">Cửa hàng</a></li>
-	        	<li class="nav-item"><a href="about" class="nav-link">About</a></li>
-	        	<li class="nav-item"><a href="blog" class="nav-link">Blog</a></li>
-	          	<li class="nav-item"><a href="contact" class="nav-link">Liên hệ</a></li>
+	        	<li class="nav-item active"><a href="{{URL::to('index')}}" class="nav-link">Trang chủ</a></li>
+	        	<li class="nav-item"><a href="{{URL::to('services')}}" class="nav-link">Dịch vụ</a></li>
+	        	<li class="nav-item"><a href="{{URL::to('gallery')}}" class="nav-link">Cửa hàng</a></li>
+	        	<li class="nav-item"><a href="{{URL::to('about')}}" class="nav-link">About</a></li>
+	        	<li class="nav-item"><a href="{{URL::to('blog')}}" class="nav-link">Blog</a></li>
+	          	<li class="nav-item"><a href="{{URL::to('contact')}}" class="nav-link">Liên hệ</a></li>
 	          	@if(Auth::check())
 	          	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="position: relative;">
 			      Tài khoản
 			    </button>
 			    <div class="dropdown-menu" style="border: 2px solid yellow; position: absolute; top: 90px; right: 15px; left: 1100px;">
-			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
+			      <a href="{{route('indexDashboard')}}" class="dropdown-item btn btn-warning">Quản Lý</a>
+			      <a href="{{URL::to('logout')}}" class="dropdown-item btn btn-warning">Đăng xuất</a>
 			      {{-- <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a>
 			      <a href="admin/dashboard/index" class="dropdown-item btn btn-warning">Quản Lý</a> --}}
 			    </div>
@@ -44,7 +45,7 @@
       </div>
       <div class="modal-body">
 
-      	<form action="login" method="post">
+      	<form action="{{URL::to('login')}}" method="post">
       		{{csrf_field()}}
       		<div class="form-group">
       			<label for="dangnhap" class="text-danger">Nhập SĐT/Email</label>

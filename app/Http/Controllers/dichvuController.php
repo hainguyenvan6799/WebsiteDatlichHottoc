@@ -35,9 +35,12 @@ class dichvuController extends Controller
         }
         $this->validate($request,
             [
+                'txtTen'=>['regex:/^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/'],
                 'txtGia'=>'gt:0|numeric'// Thêm vào kiểm tra phải là số và lớn hơn 0
             ],
             [
+                'txtTen.required'=>'Bạn cần nhập tên dịch vụ.',
+                'txtTen.regex'=>'Tên dịch vụ không được chứa các ký tự đặc biệt.',
                 'txtGia.gt'=>'Bạn cần nhập giá là một số > 0.',
                 'txtGia.numeric'=>'Bạn cần nhập giá là một chữ số.'
             ]

@@ -42,7 +42,7 @@ class lichdatController extends Controller
         $timeslot = $request->timeslot;
         $id_cuahang = session()->get('id_cuahang');
         $email = $request->email;
-        // $sdt = session()->get('sdt');
+        $sdt = session()->get('sdt');
         $id_dichvu = $request->id_dichvu;
 
         $lichdat = new LichDat;
@@ -52,7 +52,10 @@ class lichdatController extends Controller
         $lichdat->dichvu_id = $id_dichvu;
         $lichdat->thoigian = $timeslot;
         $lichdat->id_cuahang = $id_cuahang;
+        $lichdat->sdt = $sdt;
         $lichdat->save();
+
+        session()->forget('sdt');
 
         return redirect('/')->with('<script>alert("Đặt lịch thành công.");</script>');
 

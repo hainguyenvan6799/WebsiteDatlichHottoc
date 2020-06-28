@@ -112,7 +112,7 @@
         <h3 class="vr">Call Us: 012-3456-7890</h3>
     		<div class="row justify-content-center">
     			<div class="col-md-10 ftco-animate">
-    				<form action="lichdat1" class="appointment-form" method="post">
+    				<form action="{{URL::to('testdt')}}" class="appointment-form" method="get">
               {{csrf_field()}}
 	            <div class="row">
 	              <div class="col-sm-8" style="margin: auto;">
