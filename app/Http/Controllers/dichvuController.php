@@ -35,7 +35,7 @@ class dichvuController extends Controller
         }
         $this->validate($request,
             [
-                'txtTen'=>['regex:/^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/'],
+                'txtTen'=>['regex:/^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/'],// chứa chữ cái, số, không chứa kí tự đặc biệt
                 'txtGia'=>'gt:0|numeric'// Thêm vào kiểm tra phải là số và lớn hơn 0
             ],
             [
