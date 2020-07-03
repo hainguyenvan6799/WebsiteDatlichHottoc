@@ -224,9 +224,9 @@ Route::get('getLichlamviecNhanvien/{id_nhanvien}', 'lichdatController@getLichlam
 //get khung giờ làm việc của nhân viên trong ngày đó
 Route::get('getKhunggio/{ngay}/{idnv}', 'lichdatController@getKhunggio')->name('getKhunggio');
 
-Route::get('multistepform', function(){
-	return view('datlich.datlichnhieubuoc');
-});
-Route::get('testdt', function(){
-	return view('datlich.test');
+// Route::get('multistepform', function(){
+// 	return view('datlich.datlichnhieubuoc');
+// });
+Route::get('formDatLich', function(){
+	return view('datlich.datlich');
 });

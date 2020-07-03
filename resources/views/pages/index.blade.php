@@ -9,7 +9,7 @@
           	<div class="text text-center">
           		<span class="subheading">Welcome to Haircare</span>
 		  				<h1 class="mb-4">We are professional care for your hair</h1>
-		  				<p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-2">Book now</a></p>
+		  				<p><a href="{{URL::to('formDatLich')}}" class="btn btn-primary btn-outline-primary px-4 py-2">Đặt lịch ngay!!!</a></p>
 							</div>
             </div>
           </div>
@@ -105,28 +105,28 @@
     		<div class="row justify-content-center pb-3">
           <div class="col-md-10 heading-section text-center ftco-animate">
           	<span class="subheading">Booking</span>
-            <h2 class="mb-4">Make an Appointment</h2>
+            <h2 class="mb-4">Đặt lịch nào!!!</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
           </div>
         </div>
         <h3 class="vr">Call Us: 012-3456-7890</h3>
     		<div class="row justify-content-center">
     			<div class="col-md-10 ftco-animate">
-    				<form action="{{URL::to('testdt')}}" class="appointment-form" method="get">
+    				<form action="{{URL::to('formDatLich')}}" class="appointment-form" method="get">
               {{csrf_field()}}
 	            <div class="row">
 	              <div class="col-sm-8" style="margin: auto;">
 
-		                <div class="form-group">
-				            <input type="tel" class="form-control" id="appointment_sdt" name="appointment_sdt" placeholder="Nhập số điện thoại để đặt lịch" required="">
+		            <div class="form-group">
+				          <input type="tel" class="form-control" id="appointment_sdt" name="appointment_sdt" placeholder="Nhập số điện thoại để đặt lịch..." required="">
 				        </div>
+                <div class="form-group">
+                <input type="submit" value="Đặt ngay." class="btn btn-primary rounded">
+              </div>
 
 				    </div>
 	              </div>
 		          </div>
-		          <div class="form-group">
-	              <input type="submit" value="Make an Appointment" class="btn btn-primary">
-	            </div>
 	          </form>
     			</div>
     		</div>

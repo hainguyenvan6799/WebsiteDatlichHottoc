@@ -52,6 +52,7 @@ class lichdatController extends Controller
         $lichdat->dichvu_id = $id_dichvu;
         $lichdat->thoigian = $timeslot;
         $lichdat->id_cuahang = $id_cuahang;
+        $lichdat->hienthi = 1;
         $lichdat->sdt = $sdt;
         $lichdat->save();
 
@@ -87,7 +88,9 @@ class lichdatController extends Controller
     }
 
     public function getXoa($id){
-        LichDat::destroy($id);
+        $lichdat = LichDat::find($id);
+        $lichdat->hienthi = 0;
+        $lichdat->save();
         return redirect()->route('lichdat/getDanhsach')->with('thongbao', 'Xóa lịch đặt thành công.');
     }
 
@@ -135,7 +138,7 @@ class lichdatController extends Controller
         echo '<select id="chon_ngaylamviec" data-idnv="'.$id_nhanvien.'" name="chon_ngaylamviec"><option>Chọn ngày làm việc</option>';
             foreach($lichlamviec as $llv)
             {   
-                if($llv->ngay >= date('Y-m-d H:i:s')){
+                if($llv->ngay >= date('Y-m-d')){
                     echo '<option value="'.$llv->ngay.'">'.$llv->ngay.'</option>';
                 }
             }

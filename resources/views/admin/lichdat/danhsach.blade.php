@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                             @foreach($lichdat as $ld)
-                            
+                            @if($ld->hienthi == 1)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ld->id}}</td>
                                 <td>{{$ld->nhanvien->user->name}}</td>
@@ -41,6 +41,7 @@
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a id="xoa" class="xoa" href="{{URL::to('admin/lichdat/xoa/'.$ld->id)}}"> Delete</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('lichdat/getSua', ['id'=>$ld->id])}}">Edit</a></td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

@@ -96,10 +96,11 @@ body {font-family: Arial;}
     }
     $timeslot = CalendarController::timeslot($duration, $cleanup, $start, $end);
     foreach($timeslot as $t){ ?>
-    
+
       <div id="timeslot">
         @if($t <= Carbon\Carbon::now('Asia/Ho_Chi_Minh')->hour && $dateArray[$i] <= $now) 
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
+          
         @elseif(LichDat::where('nhanvien_id', $id_nhanvien)->where('ngay', $dateArray[$i])->where('thoigian', $t)->where('hienthi', 1)->get()->toArray())
           <button type="button" class="btn btn-info btn-lg book" data-toggle="modal" data-target="#myModal" data-timeslot="{{$t}}" title="Booked" disabled="">{{$t}}</button>
         @else
@@ -171,8 +172,6 @@ body {font-family: Arial;}
 
 
 <?php } ?>
-
-
 
 {{-- && lichlamviec_nhanvien::where('id_nhanvien', $nv->id)->where('ngaylamviec', ) --}}
 <script>
